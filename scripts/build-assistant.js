@@ -30,18 +30,24 @@ async function bundleAssistant() {
   const tempAssets = path.resolve(process.cwd(), '.temp_ai_build/assets');
   const targetAssets = path.resolve(process.cwd(), 'assets');
 
+  // Remove stale worker names from earlier builds. Vite's entry bundle refers
+  // to the hashed worker filename, so the exact generated filename must survive.
+  if (fs.existsSync(targetAssets)) {
+    for (const existing of fs.readdirSync(targetAssets)) {
+      if (/^ai-worker(?:-[\w-]+)?\.js$/.test(existing)) {
+        fs.rmSync(path.join(targetAssets, existing), { force: true });
+      }
+    }
+  }
+
   if (fs.existsSync(tempAssets)) {
     const files = fs.readdirSync(tempAssets);
     for (const file of files) {
       if (file.endsWith('.js')) {
         const srcPath = path.join(tempAssets, file);
-        let destName = file;
-        if (file.startsWith('ai-worker')) {
-          destName = 'ai-worker.js';
-        }
-        const destPath = path.join(targetAssets, destName);
+        const destPath = path.join(targetAssets, file);
         fs.copyFileSync(srcPath, destPath);
-        console.log(`[build-assistant] Synchronized ${destName} -> assets/`);
+        console.log(`[build-assistant] Synchronized ${file} -> assets/`);
       }
     }
   }

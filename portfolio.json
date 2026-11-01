@@ -19,14 +19,55 @@
     }
   },
   "technicalSkills": {
-    "programmingLanguages": ["C", "C++", "Python", "Java", "SQL"],
-    "webDevelopment": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "TypeScript"],
-    "developerTools": ["Git", "GitHub", "VS Code"],
-    "cloudAndDevOps": ["Linux", "Docker", "AWS (Amazon Web Services)"],
+    "programmingLanguages": [
+      "C",
+      "C++",
+      "Python",
+      "Java",
+      "SQL"
+    ],
+    "webDevelopment": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "TypeScript"
+    ],
+    "developerTools": [
+      "Git",
+      "GitHub",
+      "VS Code"
+    ],
+    "cloudAndDevOps": [
+      "Linux",
+      "Docker",
+      "AWS (Amazon Web Services)"
+    ],
     "proficiencyStages": {
-      "confidentlyDemonstrating": ["C", "C++", "HTML5", "CSS3", "VS Code"],
-      "practicedThroughProjects": ["Python", "JavaScript", "TypeScript", "React", "Git", "GitHub"],
-      "learningAndExploring": ["Linux", "Docker", "AWS", "Java", "SQL", "Node.js"]
+      "confidentlyDemonstrating": [
+        "C",
+        "C++",
+        "HTML5",
+        "CSS3",
+        "VS Code"
+      ],
+      "practicedThroughProjects": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Git",
+        "GitHub"
+      ],
+      "learningAndExploring": [
+        "Linux",
+        "Docker",
+        "AWS",
+        "Java",
+        "SQL",
+        "Node.js"
+      ]
     }
   },
   "softSkills": [
@@ -51,9 +92,14 @@
         "Calendar view",
         "Local-first data storage with backup and restore"
       ],
-      "technologies": ["HTML5", "CSS3", "JavaScript", "LocalStorage API"],
+      "technologies": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "LocalStorage API"
+      ],
       "contribution": "Designed the complete UI/UX, implemented timetable data models, and built the local-first state persistence logic.",
-      "github": "https://github.com/Nishanthv4",
+      "github": null,
       "status": "Active Project"
     },
     {
@@ -68,9 +114,15 @@
         "Gemini API integration concept",
         "Nuanced reporting format (does not make binary true/false judgments)"
       ],
-      "technologies": ["JavaScript", "HTML5", "CSS3", "REST APIs", "Gemini API concept"],
+      "technologies": [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "REST APIs",
+        "Gemini API concept"
+      ],
       "contribution": "Conceptualized the credibility indicator taxonomy, constructed the web interface, and integrated response rendering logic.",
-      "github": "https://github.com/Nishanthv4",
+      "github": null,
       "status": "Research Concept & Active Build"
     },
     {
@@ -84,7 +136,12 @@
         "TypeScript type safety",
         "Capacitor native Android build integration"
       ],
-      "technologies": ["React", "TypeScript", "Vite", "Capacitor"],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Capacitor"
+      ],
       "contribution": "Developed UI components, configured TypeScript application architecture, and established Capacitor mobile build pipeline.",
       "github": "https://github.com/Nishanthv4/Quizhero",
       "status": "Active Project"
@@ -100,8 +157,13 @@
         "AWS EC2 and S3 basics",
         "Automated GitHub Actions CI/CD pipelines"
       ],
-      "technologies": ["Docker", "Linux", "AWS", "Git CI/CD"],
-      "github": "https://github.com/Nishanthv4",
+      "technologies": [
+        "Docker",
+        "Linux",
+        "AWS",
+        "Git CI/CD"
+      ],
+      "github": null,
       "status": "In Architecture & Planning"
     }
   ],
@@ -111,6 +173,6 @@
   "experience": {
     "academicExperience": "First-year coursework at R.M.D. Engineering College (Department of CSE) including programming methodology, C/C++ laboratory practicals, and computing seminars.",
     "internshipStatus": "Currently seeking software development and cloud engineering internship opportunities for summer/winter.",
-    "extracurricular": "Participating in campus coding clubs, peer study circles, and collaborative hackathon preparation."
+    "extracurricular": "Independent project development, academic coursework, and preparation for future technical events and hackathons."
   }
 }

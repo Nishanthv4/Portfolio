@@ -10,7 +10,10 @@ export function buildPortfolioContext() {
   const s = portfolioData.technicalSkills;
   
   const projectsList = portfolioData.projects.map(pr => {
-    return `- ${pr.name} (${pr.category}): ${pr.brief} Tech: ${pr.technologies.join(', ')}. Status: ${pr.status}. Repo: ${pr.github || p.contact.github}`;
+    const repository = pr.github
+      ? `Repository: ${pr.github}`
+      : 'Repository: Not publicly published yet.';
+    return `- ${pr.name} (${pr.category}): ${pr.brief} Tech: ${pr.technologies.join(', ')}. Status: ${pr.status}. ${repository}`;
   }).join('\n');
 
   return `

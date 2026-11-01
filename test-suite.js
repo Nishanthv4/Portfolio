@@ -143,6 +143,51 @@ assert(packageJson.dependencies['@mlc-ai/web-llm'], 'web-llm dependency verified
 assert(packageJson.dependencies['dompurify'], 'dompurify dependency verified');
 assert(packageJson.dependencies['marked'], 'marked dependency verified');
 
+// --------------------------------------------------------------------------
+// TEST 7: AI worker build regression and truthful project data
+// --------------------------------------------------------------------------
+console.log('\n--- 7. Testing AI worker build regression and truthful project data ---');
+const buildScript = fs.readFileSync('scripts/build-assistant.js', 'utf8');
+const knowledgeSource = fs.readFileSync('src/portfolioKnowledge.js', 'utf8');
+const readmeSource = fs.readFileSync('README.md', 'utf8');
+const workflowSource = fs.readFileSync('.github/workflows/deploy.yml', 'utf8');
+
+assert(buildScript.includes('path.join(targetAssets, file)'), 'AI build preserves generated worker filenames');
+assert(!buildScript.includes("destName = 'ai-worker.js'"), 'AI build no longer renames hashed workers');
+assert(knowledgeSource.includes('Not publicly published yet'), 'AI assistant does not invent unpublished repository links');
+assert(portfolio.projects.find(p => p.name === 'StudyMate')?.github === null, 'StudyMate repository marked unpublished');
+assert(portfolio.projects.find(p => p.name === 'AI News Detector')?.github === null, 'AI News Detector repository marked unpublished');
+assert(portfolio.experience.extracurricular.includes('Independent project development'), 'Experience copy avoids unsupported club participation');
+assert(readmeSource.includes('SmolLM2-360M-Instruct'), 'README documents the implemented SmolLM2 model');
+assert(!readmeSource.includes('Qwen2.5-0.5B'), 'README no longer documents the retired Qwen model');
+assert(workflowSource.includes('npm test'), 'GitHub Pages deployment runs automated tests');
+assert(packageJson.scripts.test === 'node test-suite.js', 'npm test script is configured');
+
+// --------------------------------------------------------------------------
+// TEST 8: Modal keyboard focus management
+// --------------------------------------------------------------------------
+console.log('\n--- 8. Testing modal keyboard accessibility ---');
+const applicationScript = fs.readFileSync('script.js', 'utf8');
+assert(applicationScript.includes('modalTriggerToRestore'), 'Modal records the trigger for focus restoration');
+assert(applicationScript.includes("event.key !== 'Tab'"), 'Modal traps keyboard Tab navigation');
+assert(applicationScript.includes('trigger.focus()'), 'Modal restores focus after closing');
+
+// --------------------------------------------------------------------------
+// TEST 9: Accurate public project source links
+// --------------------------------------------------------------------------
+console.log('\n--- 9. Testing project repository links ---');
+const projectSourceLinks = [...new JSDOM(indexHtml).window.document.querySelectorAll('.project-card .proj-btn-github[href]')];
+assert(projectSourceLinks.length === 1, 'Only projects with a public source repository render a source link');
+assert(projectSourceLinks[0]?.getAttribute('href') === 'https://github.com/Nishanthv4/Quizhero', 'QuizHero links to its actual public repository');
+assert(indexHtml.includes('Repository not published'), 'Unpublished projects show a non-clickable repository status');
+
+// --------------------------------------------------------------------------
+// TEST 10: Production build verification guard
+// --------------------------------------------------------------------------
+console.log('\n--- 10. Testing production build verification guard ---');
+assert(fs.existsSync('scripts/verify-build.js'), 'Production build verification script exists');
+assert(packageJson.scripts.build.includes('scripts/verify-build.js'), 'Production build runs the asset verification guard');
+
 console.log('\n====================================================');
 console.log(`TEST SUITE SUMMARY: ${passedTests} / ${totalTests} assertions passed.`);
 console.log('====================================================\n');

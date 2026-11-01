@@ -368,12 +368,20 @@
   const resumePreviewBtn = document.getElementById('btnPreviewResume');
   const resumeModal = document.getElementById('modalResume');
 
-  function openModal(modalEl) {
+  let modalTriggerToRestore = null;
+
+  function getModalFocusableElements(modalEl) {
+    return [...modalEl.querySelectorAll(
+      'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [contenteditable="true"], [tabindex]:not([tabindex="-1"])'
+    )].filter(element => element.getClientRects().length > 0);
+  }
+
+  function openModal(modalEl, trigger = document.activeElement) {
     if (!modalEl) return;
+    modalTriggerToRestore = trigger instanceof HTMLElement ? trigger : null;
     modalEl.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
-    
-    // Focus close button for accessibility
+
     const closeBtn = modalEl.querySelector('.modal-close-btn');
     if (closeBtn) closeBtn.focus();
   }
@@ -382,7 +390,37 @@
     const openModals = document.querySelectorAll('.modal-dialog:not([hidden])');
     openModals.forEach(m => m.setAttribute('hidden', ''));
     document.body.style.overflow = '';
+
+    const trigger = modalTriggerToRestore;
+    modalTriggerToRestore = null;
+    if (trigger && trigger.isConnected) trigger.focus();
   }
+
+  // Keep keyboard focus inside the active dialog and return it to the opener
+  // when the dialog closes.
+  window.addEventListener('keydown', (event) => {
+    const modal = document.querySelector('.modal-dialog:not([hidden])');
+    if (!modal || event.key !== 'Tab') return;
+
+    const focusable = getModalFocusableElements(modal);
+    if (focusable.length === 0) {
+      event.preventDefault();
+      modal.setAttribute('tabindex', '-1');
+      modal.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 
   // Bind project details modal triggers
   modalTriggers.forEach(btn => {
