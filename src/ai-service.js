@@ -56,21 +56,8 @@ export async function checkWebGPUSupport() {
 
     const hasShaderF16 = adapter.features.has('shader-f16');
 
-    // Attach device probe to detect memory exhaustion and device loss early
-    try {
-      const device = await adapter.requestDevice({
-        requiredFeatures: hasShaderF16 ? ['shader-f16'] : []
-      });
-
-      if (device && device.lost) {
-        device.lost.then((info) => {
-          console.warn(`[WebGPU] Device lost (${info.reason}): ${info.message}`);
-          resetEngine();
-        });
-      }
-    } catch (probeErr) {
-      console.warn('[WebGPU] Optional device probe warning:', probeErr);
-    }
+    // Avoid creating a second WebGPU device just for probing. The WebLLM
+    // engine creates and owns the device it uses for inference.
 
     // Select optimized SmolLM2-360M model based on hardware shader support:
     const selectedModel = hasShaderF16
