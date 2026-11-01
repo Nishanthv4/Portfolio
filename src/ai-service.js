@@ -7,8 +7,20 @@ let currentModelId = null;
 let CreateWebWorkerMLCEngine = null;
 let isCurrentStreamAborted = false;
 
+// Active model specification metadata
+export const MODEL_METADATA = {
+  name: 'SmolLM2-360M-Instruct',
+  q4f16_id: 'SmolLM2-360M-Instruct-q4f16_1-MLC',
+  q4f32_id: 'SmolLM2-360M-Instruct-q4f32_1-MLC',
+  downloadSizeMB: 194.18,
+  vramRequiredF16MB: 376.06,
+  vramRequiredF32MB: 579.61,
+  defaultMaxTokens: 128,
+  contextWindowOverride: 2048
+};
+
 /**
- * Lazy-loads the WebLLM engine constructor only when needed.
+ * Dynamically loads the WebLLM engine constructor only when needed.
  */
 async function getCreateWebWorkerMLCEngine() {
   if (!CreateWebWorkerMLCEngine) {
@@ -20,7 +32,7 @@ async function getCreateWebWorkerMLCEngine() {
 
 /**
  * Checks whether WebGPU is supported on the user's browser and hardware.
- * Probes for adapter capabilities, shader-f16 support, and attaches device loss listeners.
+ * Probes adapter features, checks for shader-f16 support, and attaches device loss listeners.
  */
 export async function checkWebGPUSupport() {
   if (typeof navigator === 'undefined' || !navigator.gpu) {
@@ -60,15 +72,17 @@ export async function checkWebGPUSupport() {
       console.warn('[WebGPU] Optional device probe warning:', probeErr);
     }
 
-    // Exact model IDs from @mlc-ai/web-llm prebuilt registry:
+    // Select optimized SmolLM2-360M model based on hardware shader support:
     const selectedModel = hasShaderF16
-      ? 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC'
-      : 'Qwen2.5-0.5B-Instruct-q4f32_1-MLC';
+      ? MODEL_METADATA.q4f16_id
+      : MODEL_METADATA.q4f32_id;
 
     return {
       supported: true,
       hasShaderF16,
-      modelId: selectedModel
+      modelId: selectedModel,
+      downloadSizeMB: MODEL_METADATA.downloadSizeMB,
+      vramRequiredMB: hasShaderF16 ? MODEL_METADATA.vramRequiredF16MB : MODEL_METADATA.vramRequiredF32MB
     };
   } catch (err) {
     return {
@@ -80,8 +94,8 @@ export async function checkWebGPUSupport() {
 
 /**
  * Initializes the WebLLM engine inside a dedicated Web Worker.
- * Uses a shared Promise to prevent multiple initialization race conditions (Bug 5C).
- * Reports download progress and caches weights in browser CacheStorage.
+ * Uses a singleton Promise latch to prevent concurrent duplicate initializations.
+ * Reports download progress and caches weights in browser CacheStorage/IndexedDB.
  *
  * @param {Function} onProgress - Callback receiving { progress: number, text: string }
  * @returns {Promise<{ success: boolean, engine: any, modelId: string }>}
@@ -91,7 +105,7 @@ export async function initializeModel(onProgress) {
     return { success: true, engine: engineInstance, modelId: currentModelId };
   }
 
-  // If initialization is already in flight, reuse the active promise
+  // Reuse in-flight initialization promise if already active
   if (initPromise) {
     return initPromise;
   }
@@ -105,7 +119,7 @@ export async function initializeModel(onProgress) {
 
       currentModelId = gpuCheck.modelId;
 
-      // Spin up dedicated Web Worker
+      // Spin up dedicated Web Worker for inference (keeps main UI thread responsive)
       activeWorker = new Worker(
         new URL('./ai-worker.js', import.meta.url),
         { type: 'module' }
@@ -118,6 +132,7 @@ export async function initializeModel(onProgress) {
 
       const createEngine = await getCreateWebWorkerMLCEngine();
 
+      // Configure engine with progress tracking and optimized context window override
       engineInstance = await createEngine(
         activeWorker,
         currentModelId,
@@ -127,6 +142,9 @@ export async function initializeModel(onProgress) {
               onProgress(report);
             }
           }
+        },
+        {
+          context_window_size: MODEL_METADATA.contextWindowOverride
         }
       );
 
@@ -137,7 +155,9 @@ export async function initializeModel(onProgress) {
       if (friendlyMessage.includes('quota') || friendlyMessage.includes('storage')) {
         friendlyMessage = 'Insufficient browser storage quota to cache model weights. Please free up disk space and try again.';
       } else if (friendlyMessage.includes('network') || friendlyMessage.includes('Failed to fetch')) {
-        friendlyMessage = 'Network connection dropped while downloading model weights. Please check your internet and click Retry.';
+        friendlyMessage = 'Network connection dropped while downloading model weights. Please check your internet connection and click Retry.';
+      } else if (friendlyMessage.includes('memory') || friendlyMessage.includes('allocation')) {
+        friendlyMessage = 'GPU memory allocation failed. Please close other GPU-intensive tabs and try again.';
       }
       throw new Error(friendlyMessage);
     } finally {
@@ -156,6 +176,13 @@ export function isModelReady() {
 }
 
 /**
+ * Returns the currently active model identifier.
+ */
+export function getCurrentModelId() {
+  return currentModelId;
+}
+
+/**
  * Interrupts active text generation and sets the abort cancellation flag.
  */
 export function stopGeneration() {
@@ -171,8 +198,10 @@ export function stopGeneration() {
 
 /**
  * Sends a message along with recent conversation history and streams tokens back.
- * Guarantees the latest user message is included exactly once (Fixes Bug 5A).
- * Properly respects stopGeneration() cancellation (Fixes Bug 5E).
+ * - Deduplicates user prompt to prevent double insertion.
+ * - Caps conversation context to the last 4 turns (2 rounds) for low latency.
+ * - Limits response to ~128 tokens by default for instant responses.
+ * - Respects stopGeneration() cancellation tokens.
  *
  * @param {Array<{role: string, content: string}>} conversationHistory - Prior conversation turns
  * @param {string} userMessage - Latest user message
@@ -191,7 +220,7 @@ export async function streamChatCompletion(conversationHistory, userMessage, onT
     content: getSystemPrompt()
   };
 
-  // Build clean history without duplicate injection (Bug 5A)
+  // Build clean history without duplicate injection
   const historyCopy = Array.isArray(conversationHistory) ? [...conversationHistory] : [];
   const cleanUserText = (userMessage || '').trim();
 
@@ -203,8 +232,9 @@ export async function streamChatCompletion(conversationHistory, userMessage, onT
     }
   }
 
-  // Keep context compact (system prompt + last 6 messages max)
-  const trimmedHistory = historyCopy.slice(-6);
+  // Keep context length compact: system prompt + last 4 messages max (2 conversation turns)
+  // This drastically reduces prefill time and prevents memory bloat on consecutive questions
+  const trimmedHistory = historyCopy.slice(-4);
 
   const messages = [
     systemMessage,
@@ -216,8 +246,8 @@ export async function streamChatCompletion(conversationHistory, userMessage, onT
   try {
     const completion = await engineInstance.chat.completions.create({
       messages,
-      temperature: 0.6,
-      max_tokens: 350,
+      temperature: 0.5,
+      max_tokens: MODEL_METADATA.defaultMaxTokens, // 128 tokens default for high responsiveness
       stream: true
     });
 
@@ -240,12 +270,16 @@ export async function streamChatCompletion(conversationHistory, userMessage, onT
     if (isCurrentStreamAborted) {
       return { text: accumulatedText, aborted: true };
     }
+    // Inspect for WebGPU device loss or memory issues during inference
+    if (err.message && (err.message.includes('device is lost') || err.message.includes('out of memory'))) {
+      resetEngine();
+    }
     throw err;
   }
 }
 
 /**
- * Resets the active engine, terminates the worker, and clears memory.
+ * Resets the active engine, terminates the worker, and frees memory.
  */
 export function resetEngine() {
   if (engineInstance) {

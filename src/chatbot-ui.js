@@ -1,6 +1,13 @@
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
-import { checkWebGPUSupport, initializeModel, isModelReady, streamChatCompletion, stopGeneration } from './ai-service.js';
+import {
+  checkWebGPUSupport,
+  initializeModel,
+  isModelReady,
+  streamChatCompletion,
+  stopGeneration,
+  MODEL_METADATA
+} from './ai-service.js';
 import { suggestedQuestions } from './portfolioKnowledge.js';
 
 marked.setOptions({
@@ -9,7 +16,7 @@ marked.setOptions({
 });
 
 /**
- * Sanitizes Markdown-generated HTML to prevent XSS (Fixes Bug 5B).
+ * Sanitizes Markdown-generated HTML to prevent XSS.
  * Permits standard formatting tags, code snippets, and safe links.
  */
 function renderSafeMarkdown(markdownText) {
@@ -26,6 +33,7 @@ function renderSafeMarkdown(markdownText) {
 
 /**
  * Chatbot UI Controller
+ * Optimized for low-latency streaming, non-blocking UI, and responsive typing.
  */
 export class ChatbotUI {
   constructor() {
@@ -33,7 +41,8 @@ export class ChatbotUI {
     this.isGenerating = false;
     this.isOpen = false;
     this.initStatus = 'unloaded'; // 'unloaded' | 'loading' | 'ready' | 'error'
-    this.selectedModelId = 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC';
+    this.selectedModelId = MODEL_METADATA.q4f16_id;
+    this.rafId = null;
 
     this.initDOMElements();
     this.bindEvents();
@@ -178,20 +187,20 @@ export class ChatbotUI {
       }
 
       this.selectedModelId = gpuCheck.modelId;
-      this.setStatus('loading', 'Loading Model...');
+      this.setStatus('loading', `Loading SmolLM2 (~${gpuCheck.downloadSizeMB} MB)...`);
 
       await initializeModel((report) => {
         this.handleProgressUpdate(report);
       });
 
-      this.setStatus('ready', 'Model Ready (Local WebGPU)');
+      this.setStatus('ready', 'Model Ready (SmolLM2-360M · WebGPU)');
       this.showProgress(false);
       if (this.welcomeBanner) {
         this.welcomeBanner.classList.add('hidden');
       }
 
       this.appendAssistantMessage(
-        `👋 Hello! I am **Nishanth's AI Portfolio Assistant**, running **100% locally inside your browser via WebGPU** using **Qwen2.5-0.5B**.\n\nYou can ask me anything about Nishanth's **projects (StudyMate, AI News Detector)**, **technical skills (C, C++, Python, Linux, Docker, AWS)**, or **career interests**!`
+        `👋 Hello! I am **Nishanth's AI Portfolio Assistant**, running **100% locally in your browser via WebGPU** using **SmolLM2-360M** (ultralight ~194 MB model).\n\nYou can ask me anything about Nishanth's **projects (StudyMate, AI News Detector, QuizHero)**, **technical skills (C, C++, Python, Linux, Docker, AWS)**, or **career goals**!`
       );
 
       if (this.inputField) {
@@ -258,6 +267,11 @@ export class ChatbotUI {
     }
   }
 
+  /**
+   * Toggles generation UI state.
+   * NOTE: Input field is intentionally kept ENABLED during generation so the user
+   * can freely type their next thought without UI freezing or lag.
+   */
   setGenerating(isGen) {
     this.isGenerating = isGen;
     if (this.sendBtn) {
@@ -267,21 +281,28 @@ export class ChatbotUI {
       this.stopBtn.classList.toggle('hidden', !isGen);
     }
     if (this.inputField) {
-      this.inputField.disabled = isGen;
+      this.inputField.placeholder = isGen
+        ? 'AI is responding... (Type your next question)'
+        : 'Ask about Nishanth\'s skills, projects, or background...';
     }
   }
 
   async handleSendMessage() {
+    // Prevent duplicate concurrent submission while generating
     if (!this.inputField || this.isGenerating) return;
     const text = this.inputField.value.trim();
     if (!text) return;
 
+    // Immediately clear input field for responsiveness
     this.inputField.value = '';
     this.inputField.style.height = 'auto';
 
     if (!isModelReady()) {
       const ready = await this.startEngine();
-      if (!ready) return;
+      if (!ready) {
+        this.inputField.value = text;
+        return;
+      }
     }
 
     await this.sendMessage(text);
@@ -292,48 +313,64 @@ export class ChatbotUI {
 
     const trimmedUserText = userText.trim();
 
-    // Minimize suggested question chips once conversation begins
+    // Minimize suggested chips once chat starts
     if (this.suggestedBox) {
       this.suggestedBox.classList.add('minimized');
     }
 
-    // Append user message to UI and history exactly once (Fixes Bug 5A)
+    // Display user message immediately in DOM
     this.appendUserMessage(trimmedUserText);
     this.conversationHistory.push({ role: 'user', content: trimmedUserText });
 
-    // Create assistant message placeholder
+    // Create assistant message placeholder with animated typing indicator
     const assistantBubble = this.createAssistantPlaceholder();
     this.setGenerating(true);
     this.scrollToBottom();
 
+    // Throttled streaming renderer using requestAnimationFrame to prevent layout thrashing
+    let latestText = '';
+    const throttledUpdate = (newText) => {
+      latestText = newText;
+      if (!this.rafId) {
+        this.rafId = requestAnimationFrame(() => {
+          if (assistantBubble && latestText) {
+            assistantBubble.innerHTML = renderSafeMarkdown(latestText);
+          }
+          this.scrollToBottom();
+          this.rafId = null;
+        });
+      }
+    };
+
     try {
-      let fullResponse = '';
       const streamResult = await streamChatCompletion(
         this.conversationHistory,
         trimmedUserText,
         (partialText) => {
-          fullResponse = partialText;
-          if (assistantBubble) {
-            assistantBubble.innerHTML = renderSafeMarkdown(partialText);
-          }
-          this.scrollToBottom();
+          throttledUpdate(partialText);
         }
       );
 
-      // Handle cancellation vs normal completion (Fixes Bug 5E)
+      // Cancel any pending RAF before final flush
+      if (this.rafId) {
+        cancelAnimationFrame(this.rafId);
+        this.rafId = null;
+      }
+
+      // Handle user cancellation vs normal completion
       if (streamResult && streamResult.aborted) {
-        if (!fullResponse) {
+        if (!latestText) {
           if (assistantBubble) {
             assistantBubble.innerHTML = `<em>[Response stopped by user]</em>`;
           }
         } else if (assistantBubble) {
-          assistantBubble.innerHTML = renderSafeMarkdown(fullResponse) + `<br><small style="color:var(--text-muted);font-size:0.75rem;"><em>(Generation stopped)</em></small>`;
+          assistantBubble.innerHTML = renderSafeMarkdown(latestText) + `<br><small style="color:var(--text-muted);font-size:0.75rem;"><em>(Generation stopped)</em></small>`;
         }
-        if (fullResponse) {
-          this.conversationHistory.push({ role: 'assistant', content: fullResponse });
+        if (latestText) {
+          this.conversationHistory.push({ role: 'assistant', content: latestText });
         }
       } else {
-        const finalText = streamResult?.text || fullResponse;
+        const finalText = streamResult?.text || latestText;
         if (finalText) {
           if (assistantBubble) {
             assistantBubble.innerHTML = renderSafeMarkdown(finalText);
@@ -342,6 +379,10 @@ export class ChatbotUI {
         }
       }
     } catch (err) {
+      if (this.rafId) {
+        cancelAnimationFrame(this.rafId);
+        this.rafId = null;
+      }
       console.error('Chat error:', err);
       if (assistantBubble) {
         assistantBubble.innerHTML = `<span class="ai-error-inline">⚠️ Error generating response: ${this.escapeHTML(err.message || 'Generation failed')}. Please click Retry.</span>`;
@@ -403,6 +444,11 @@ export class ChatbotUI {
     if (this.isGenerating) {
       stopGeneration();
       this.setGenerating(false);
+    }
+
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
     }
 
     this.conversationHistory = [];
