@@ -182,6 +182,17 @@ assert(projectSourceLinks[0]?.getAttribute('href') === 'https://github.com/Nisha
 assert(indexHtml.includes('Repository not published'), 'Unpublished projects show a non-clickable repository status');
 
 // --------------------------------------------------------------------------
+// TEST 11: Published resume asset
+// --------------------------------------------------------------------------
+console.log('\n--- 11. Testing source and public resume copies ---');
+const sourceResume = fs.readFileSync('assets/resume.pdf');
+const publicResume = fs.readFileSync('public/assets/resume.pdf');
+assert(sourceResume.subarray(0, 5).toString('ascii') === '%PDF-', 'Source resume is a valid PDF');
+assert(publicResume.subarray(0, 5).toString('ascii') === '%PDF-', 'Public resume is a valid PDF');
+assert(sourceResume.length > 4000, 'Source resume is not the placeholder PDF');
+assert(publicResume.length > 4000, 'Public resume is not the placeholder PDF');
+
+// --------------------------------------------------------------------------
 // TEST 10: Production build verification guard
 // --------------------------------------------------------------------------
 console.log('\n--- 10. Testing production build verification guard ---');
