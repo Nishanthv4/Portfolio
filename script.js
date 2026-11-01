@@ -403,6 +403,13 @@
     closer.addEventListener('click', closeAllModals);
   });
 
+  // Close modals on Escape key press
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllModals();
+    }
+  });
+
   // =========================================================================
   // 10. COPY EMAIL ADDRESS TO CLIPBOARD
   // =========================================================================
