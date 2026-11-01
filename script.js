@@ -271,8 +271,8 @@
             <span class="term-cmd">tools --list</span>
           </div>
           <div class="terminal-output">
-            <span class="out-cyan">LANGUAGES:</span> C, C++, Python, JavaScript<br>
-            <span class="out-green">WEB:</span> HTML5, CSS3, DOM APIs<br>
+            <span class="out-cyan">LANGUAGES:</span> C, C++, Python, Java, SQL<br>
+            <span class="out-green">WEB:</span> HTML5, CSS3, JavaScript, TypeScript, React<br>
             <span class="out-yellow">CLOUD &amp; TOOLS:</span> Linux, Docker, AWS, Git, GitHub, VS Code
           </div>
         `;
@@ -427,25 +427,18 @@
     btn.addEventListener('click', () => {
       const modalId = btn.getAttribute('data-modal');
       const targetModal = document.getElementById(modalId);
-      if (targetModal) openModal(targetModal);
+      if (targetModal) openModal(targetModal, btn);
     });
   });
 
   // Bind resume preview modal trigger
   if (resumePreviewBtn && resumeModal) {
-    resumePreviewBtn.addEventListener('click', () => openModal(resumeModal));
+    resumePreviewBtn.addEventListener('click', () => openModal(resumeModal, resumePreviewBtn));
   }
 
   // Close modals on close buttons & backdrop click
   document.querySelectorAll('[data-close-modal]').forEach(closer => {
     closer.addEventListener('click', closeAllModals);
-  });
-
-  // Close modals on Escape key press
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeAllModals();
-    }
   });
 
   // =========================================================================
@@ -466,6 +459,9 @@
           // Fallback for older browsers
           const tempInput = document.createElement('textarea');
           tempInput.value = emailToCopy;
+          tempInput.style.position = 'fixed';
+          tempInput.style.opacity = '0';
+          tempInput.style.top = '0';
           document.body.appendChild(tempInput);
           tempInput.select();
           document.execCommand('copy');
