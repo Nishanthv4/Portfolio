@@ -9,7 +9,7 @@
       "location": "Tamil Nadu, India"
     },
     "careerObjective": "Develop strong computer science fundamentals, build practical software projects, gain internship experience, and prepare for a career in Cloud Engineering.",
-    "careerInterest": "Cloud Engineering, Software Development, Distributed Infrastructure, and Cloud Technologies",
+    "careerInterest": "Cloud Engineering, Software Development, Distributed Systems, and Cloud Technologies",
     "location": "Tamil Nadu, India",
     "contact": {
       "email": "nishanthv4@gmail.com",
@@ -20,13 +20,13 @@
   },
   "technicalSkills": {
     "programmingLanguages": ["C", "C++", "Python", "Java", "SQL"],
-    "webDevelopment": ["HTML5", "CSS3", "JavaScript", "React", "Node.js"],
+    "webDevelopment": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "TypeScript"],
     "developerTools": ["Git", "GitHub", "VS Code"],
     "cloudAndDevOps": ["Linux", "Docker", "AWS (Amazon Web Services)"],
     "proficiencyStages": {
       "confidentlyDemonstrating": ["C", "C++", "HTML5", "CSS3", "VS Code"],
-      "practicedThroughProjects": ["Python", "JavaScript", "Git", "GitHub"],
-      "learningAndExploring": ["Linux", "Docker", "AWS", "Java", "SQL", "React", "Node.js"]
+      "practicedThroughProjects": ["Python", "JavaScript", "TypeScript", "React", "Git", "GitHub"],
+      "learningAndExploring": ["Linux", "Docker", "AWS", "Java", "SQL", "Node.js"]
     }
   },
   "softSkills": [
@@ -59,7 +59,7 @@
     {
       "name": "AI News Detector",
       "category": "Artificial Intelligence / Web Development",
-      "brief": "An AI-assisted website designed to analyze news content and help users evaluate its credibility and contextual signals.",
+      "brief": "An AI-assisted application designed to analyze news content and help users evaluate credibility and contextual signals.",
       "problemSolved": "Enables readers to identify sensationalized headlines, missing primary source citations, and hyperbolic wording without claiming to decide absolute truth.",
       "keyFeatures": [
         "News content linguistic analysis",
@@ -74,6 +74,22 @@
       "status": "Research Concept & Active Build"
     },
     {
+      "name": "QuizHero",
+      "category": "Mobile & Web Application",
+      "brief": "An interactive quiz application built in React and TypeScript, packaged for native mobile deployment using Capacitor.",
+      "problemSolved": "Provides an engaging, responsive quiz experience accessible both in the web browser and as an installable Android APK.",
+      "keyFeatures": [
+        "Dynamic question card components",
+        "Interactive quiz flow and score tracking",
+        "TypeScript type safety",
+        "Capacitor native Android build integration"
+      ],
+      "technologies": ["React", "TypeScript", "Vite", "Capacitor"],
+      "contribution": "Developed UI components, configured TypeScript application architecture, and established Capacitor mobile build pipeline.",
+      "github": "https://github.com/Nishanthv4/Quizhero",
+      "status": "Active Project"
+    },
+    {
       "name": "Cloud Infrastructure & Microservices",
       "category": "Cloud / DevOps & Systems Exploration",
       "brief": "Upcoming academic and hackathon build exploring containerized microservices, automated CI/CD pipelines, and AWS cloud deployments.",
@@ -85,6 +101,7 @@
         "Automated GitHub Actions CI/CD pipelines"
       ],
       "technologies": ["Docker", "Linux", "AWS", "Git CI/CD"],
+      "github": "https://github.com/Nishanthv4",
       "status": "In Architecture & Planning"
     }
   ],
@@ -97,4 +114,3 @@
     "extracurricular": "Participating in campus coding clubs, peer study circles, and collaborative hackathon preparation."
   }
 }
-

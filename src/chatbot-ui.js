@@ -1,4 +1,5 @@
 import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import { checkWebGPUSupport, initializeModel, isModelReady, streamChatCompletion, stopGeneration } from './ai-service.js';
 import { suggestedQuestions } from './portfolioKnowledge.js';
 
@@ -6,6 +7,22 @@ marked.setOptions({
   breaks: true,
   gfm: true
 });
+
+/**
+ * Sanitizes Markdown-generated HTML to prevent XSS (Fixes Bug 5B).
+ * Permits standard formatting tags, code snippets, and safe links.
+ */
+function renderSafeMarkdown(markdownText) {
+  const rawHtml = marked.parse(markdownText || '');
+  return DOMPurify.sanitize(rawHtml, {
+    ALLOWED_TAGS: [
+      'p', 'br', 'strong', 'em', 'b', 'i', 'code', 'pre',
+      'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'blockquote',
+      'a', 'span', 'hr'
+    ],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'title']
+  });
+}
 
 /**
  * Chatbot UI Controller
@@ -113,7 +130,6 @@ export class ChatbotUI {
     }
 
     if (this.isOpen) {
-      // If ready, focus input
       if (isModelReady() && this.inputField) {
         setTimeout(() => this.inputField.focus(), 250);
       }
@@ -132,7 +148,6 @@ export class ChatbotUI {
       btn.textContent = q;
       btn.addEventListener('click', () => {
         if (!isModelReady()) {
-          // If model is not ready, start it first and then send question
           this.startEngine().then((ready) => {
             if (ready) {
               this.sendMessage(q);
@@ -264,7 +279,6 @@ export class ChatbotUI {
     this.inputField.value = '';
     this.inputField.style.height = 'auto';
 
-    // If model not yet ready, start it first
     if (!isModelReady()) {
       const ready = await this.startEngine();
       if (!ready) return;
@@ -274,16 +288,18 @@ export class ChatbotUI {
   }
 
   async sendMessage(userText) {
-    if (this.isGenerating) return;
+    if (this.isGenerating || !userText || !userText.trim()) return;
 
-    // Hide suggested question chips once user sends messages
+    const trimmedUserText = userText.trim();
+
+    // Minimize suggested question chips once conversation begins
     if (this.suggestedBox) {
       this.suggestedBox.classList.add('minimized');
     }
 
-    // Append user message
-    this.appendUserMessage(userText);
-    this.conversationHistory.push({ role: 'user', content: userText });
+    // Append user message to UI and history exactly once (Fixes Bug 5A)
+    this.appendUserMessage(trimmedUserText);
+    this.conversationHistory.push({ role: 'user', content: trimmedUserText });
 
     // Create assistant message placeholder
     const assistantBubble = this.createAssistantPlaceholder();
@@ -292,20 +308,44 @@ export class ChatbotUI {
 
     try {
       let fullResponse = '';
-      await streamChatCompletion(
+      const streamResult = await streamChatCompletion(
         this.conversationHistory,
-        userText,
+        trimmedUserText,
         (partialText) => {
           fullResponse = partialText;
-          assistantBubble.innerHTML = marked.parse(partialText);
+          if (assistantBubble) {
+            assistantBubble.innerHTML = renderSafeMarkdown(partialText);
+          }
           this.scrollToBottom();
         }
       );
 
-      this.conversationHistory.push({ role: 'assistant', content: fullResponse });
+      // Handle cancellation vs normal completion (Fixes Bug 5E)
+      if (streamResult && streamResult.aborted) {
+        if (!fullResponse) {
+          if (assistantBubble) {
+            assistantBubble.innerHTML = `<em>[Response stopped by user]</em>`;
+          }
+        } else if (assistantBubble) {
+          assistantBubble.innerHTML = renderSafeMarkdown(fullResponse) + `<br><small style="color:var(--text-muted);font-size:0.75rem;"><em>(Generation stopped)</em></small>`;
+        }
+        if (fullResponse) {
+          this.conversationHistory.push({ role: 'assistant', content: fullResponse });
+        }
+      } else {
+        const finalText = streamResult?.text || fullResponse;
+        if (finalText) {
+          if (assistantBubble) {
+            assistantBubble.innerHTML = renderSafeMarkdown(finalText);
+          }
+          this.conversationHistory.push({ role: 'assistant', content: finalText });
+        }
+      }
     } catch (err) {
       console.error('Chat error:', err);
-      assistantBubble.innerHTML = `<span class="ai-error-inline">⚠️ Error generating response: ${err.message || 'Generation failed'}. Please try again.</span>`;
+      if (assistantBubble) {
+        assistantBubble.innerHTML = `<span class="ai-error-inline">⚠️ Error generating response: ${this.escapeHTML(err.message || 'Generation failed')}. Please click Retry.</span>`;
+      }
     } finally {
       this.setGenerating(false);
       this.scrollToBottom();
@@ -352,7 +392,7 @@ export class ChatbotUI {
     msgEl.innerHTML = `
       <div class="ai-avatar-mini" aria-hidden="true">NV</div>
       <div class="ai-bubble assistant-bubble">
-        ${marked.parse(markdownText)}
+        ${renderSafeMarkdown(markdownText)}
       </div>
     `;
     this.messagesList.appendChild(msgEl);
@@ -393,4 +433,3 @@ export class ChatbotUI {
     return div.innerHTML;
   }
 }
-

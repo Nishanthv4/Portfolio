@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradQuiz" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1219"/>
+      <stop offset="50%" stop-color="#0e1b24"/>
+      <stop offset="100%" stop-color="#060d13"/>
+    </linearGradient>
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#3a7bd5"/>
+    </linearGradient>
+    <pattern id="gridQuiz" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 210, 255, 0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="360" fill="url(#bgGradQuiz)"/>
+  <rect width="600" height="360" fill="url(#gridQuiz)"/>
+
+  <!-- Mock Device / Card Frame -->
+  <rect x="70" y="30" width="460" height="300" rx="14" fill="#101c26" stroke="#1d3447" stroke-width="1.5"/>
+
+  <!-- Header Bar -->
+  <rect x="70" y="30" width="460" height="42" rx="14" fill="#0d1720"/>
+  <circle cx="100" cy="51" r="5" fill="#ef4444"/>
+  <circle cx="116" cy="51" r="5" fill="#f59e0b"/>
+  <circle cx="132" cy="51" r="5" fill="#10b981"/>
+
+  <text x="300" y="56" fill="#8da3b8" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">QuizHero // React + TypeScript + Capacitor</text>
+
+  <!-- Quiz Screen Mockup -->
+  <!-- Score & Progress -->
+  <rect x="100" y="92" width="400" height="8" rx="4" fill="#182c3c"/>
+  <rect x="100" y="92" width="260" height="8" rx="4" fill="url(#cyanAccent)"/>
+
+  <text x="100" y="125" fill="#64748b" font-family="'Fira Code', monospace" font-size="11">QUESTION 07 / 10</text>
+  <text x="500" y="125" fill="#00d2ff" font-family="'Fira Code', monospace" font-size="11" text-anchor="end">SCORE: 600 PTS</text>
+
+  <!-- Question Box -->
+  <rect x="100" y="142" width="400" height="54" rx="8" fill="#132332" stroke="#1f374e" stroke-width="1"/>
+  <text x="120" y="174" fill="#e2e8f0" font-family="'Inter', sans-serif" font-weight="600" font-size="14">What is the primary benefit of native Capacitor wrapping?</text>
+
+  <!-- Option A -->
+  <rect x="100" y="210" width="192" height="42" rx="6" fill="#152737" stroke="#25435e" stroke-width="1"/>
+  <text x="115" y="235" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">A. Cross-platform APKs</text>
+
+  <!-- Option B (Selected/Active) -->
+  <rect x="308" y="210" width="192" height="42" rx="6" fill="rgba(0, 210, 255, 0.12)" stroke="#00d2ff" stroke-width="1.5"/>
+  <text x="323" y="235" fill="#38bdf8" font-family="'Inter', sans-serif" font-weight="600" font-size="12">B. Unified Web &amp; Mobile ✓</text>
+
+  <!-- Option C & D -->
+  <rect x="100" y="262" width="192" height="42" rx="6" fill="#152737" stroke="#25435e" stroke-width="1"/>
+  <text x="115" y="287" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">C. Serverless DB</text>
+
+  <rect x="308" y="262" width="192" height="42" rx="6" fill="#152737" stroke="#25435e" stroke-width="1"/>
+  <text x="323" y="287" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">D. GPU Acceleration</text>
+</svg>

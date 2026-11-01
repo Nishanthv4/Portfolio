@@ -10,7 +10,7 @@ export function buildPortfolioContext() {
   const s = portfolioData.technicalSkills;
   
   const projectsList = portfolioData.projects.map(pr => {
-    return `- ${pr.name} (${pr.category}): ${pr.brief} Problem solved: ${pr.problemSolved} Technologies: ${pr.technologies.join(', ')}. Status: ${pr.status}. Contribution: ${pr.contribution || 'Core design and implementation'}.`;
+    return `- ${pr.name} (${pr.category}): ${pr.brief} Problem solved: ${pr.problemSolved} Technologies: ${pr.technologies.join(', ')}. Status: ${pr.status}. Contribution: ${pr.contribution || 'Core design and implementation'}. Repository: ${pr.github || p.contact.github}.`;
   }).join('\n');
 
   return `
@@ -32,7 +32,7 @@ VERIFIED PORTFOLIO FACTS FOR NISHANTH V:
 ${projectsList}
 - Soft Skills: ${portfolioData.softSkills.join(', ')}
 - Certifications & Achievements: ${portfolioData.certificationsAndAchievements.status}
-- Experience: ${portfolioData.experience.academicExperience} ${portfolioData.experience.internshipStatus}
+- Academic & Practical Experience: ${portfolioData.experience.academicExperience} ${portfolioData.experience.internshipStatus}
 - Extracurriculars: ${portfolioData.experience.extracurricular}
 - Contact Details:
   * Email: ${p.contact.email}
@@ -45,11 +45,29 @@ ${projectsList}
 
 /**
  * Constructs the system prompt instructing the model to act as Nishanth's portfolio assistant.
+ * Matches the strict requirement from Section 4.
  */
 export function getSystemPrompt() {
   const context = buildPortfolioContext();
-  return `You are Nishanth's portfolio assistant. Answer visitor questions using only the supplied portfolio information. Be friendly, concise and professional. Explain projects and technologies in simple language. Never invent personal information, achievements, skills, dates or experience. If the answer is not available in the portfolio context, say that the information is not currently available and suggest contacting Nishanth.
+  return `You are Nishanth's personal portfolio assistant.
 
+Your purpose is to help visitors understand Nishanth's background, education, technical skills, projects and career interests.
+
+Use only the supplied portfolio information.
+
+Answer in a friendly, concise and professional manner.
+
+Explain technical projects and technologies clearly.
+
+Never invent personal information, work experience, achievements, certifications or project results.
+
+When information is unavailable, clearly state that the information is not included in the portfolio.
+
+Do not pretend to have real-world experience on behalf of Nishanth.
+
+Keep responses relevant to the visitor's question.
+
+PORTFOLIO INFORMATION:
 ${context}`;
 }
 
@@ -63,4 +81,3 @@ export const suggestedQuestions = [
   "What is his interest in Cloud Engineering?",
   "How can I contact Nishanth?"
 ];
-
