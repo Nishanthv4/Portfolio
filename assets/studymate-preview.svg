@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="smBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c161f"/>
+      <stop offset="100%" stop-color="#070c11"/>
+    </linearGradient>
+    <linearGradient id="smAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="blueCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#152433"/>
+      <stop offset="100%" stop-color="#0f1924"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="380" rx="16" fill="url(#smBg)"/>
+  
+  <!-- Grid accents -->
+  <g stroke="#182736" stroke-width="1" opacity="0.6">
+    <line x1="40" y1="0" x2="40" y2="380"/>
+    <line x1="200" y1="0" x2="200" y2="380"/>
+    <line x1="420" y1="0" x2="420" y2="380"/>
+    <line x1="0" y1="70" x2="600" y2="70"/>
+    <line x1="0" y1="260" x2="600" y2="260"/>
+  </g>
+
+  <!-- Top App Window Bar -->
+  <rect x="25" y="25" width="550" height="330" rx="12" fill="#0d1822" stroke="#22374a" stroke-width="1.5" filter="url(#cardShadow)"/>
+  <rect x="25" y="25" width="550" height="42" rx="12" fill="#122130"/>
+  <path d="M 25 55 L 25 67 L 575 67 L 575 55 Z" fill="#122130"/>
+  <circle cx="45" cy="46" r="4.5" fill="#ef4444"/>
+  <circle cx="60" cy="46" r="4.5" fill="#f59e0b"/>
+  <circle cx="75" cy="46" r="4.5" fill="#10b981"/>
+  <text x="100" y="50" font-family="'Fira Code', monospace" font-size="12" fill="#7d9db3" font-weight="500">studymate-planner // dashboard.view</text>
+  <rect x="470" y="38" width="90" height="18" rx="9" fill="#10b981" opacity="0.2"/>
+  <text x="515" y="51" font-family="'Fira Code', monospace" font-size="9" fill="#34d399" text-anchor="middle" font-weight="600">LOCAL FIRST</text>
+
+  <!-- Sidebar / Nav inside window -->
+  <rect x="40" y="80" width="120" height="260" rx="8" fill="#101c27" stroke="#1d3042" stroke-width="1"/>
+  <rect x="52" y="96" width="96" height="24" rx="6" fill="#10b981" opacity="0.2"/>
+  <rect x="54" y="96" width="3" height="24" rx="1.5" fill="#10b981"/>
+  <text x="68" y="112" font-family="'Inter', sans-serif" font-size="11" fill="#6ee7b7" font-weight="600">Timetable</text>
+  
+  <text x="68" y="146" font-family="'Inter', sans-serif" font-size="11" fill="#71879c">Tasks & Due</text>
+  <text x="68" y="178" font-family="'Inter', sans-serif" font-size="11" fill="#71879c">Exams (3)</text>
+  <text x="68" y="210" font-family="'Inter', sans-serif" font-size="11" fill="#71879c">Analytics</text>
+  <text x="68" y="242" font-family="'Inter', sans-serif" font-size="11" fill="#71879c">Backup/Sync</text>
+
+  <!-- Main Content Area: Cards -->
+  <!-- Header inside app -->
+  <text x="180" y="104" font-family="'Inter', sans-serif" font-size="15" fill="#f1f5f9" font-weight="700">Study Schedule & Active Focus</text>
+  <text x="180" y="122" font-family="'Inter', sans-serif" font-size="10" fill="#64748b">Semester 1 · CSE Curriculum Track</text>
+
+  <!-- Exam Countdown Widget -->
+  <rect x="180" y="138" width="180" height="85" rx="8" fill="url(#blueCard)" stroke="#1e3447" stroke-width="1"/>
+  <text x="195" y="160" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" font-weight="600">UPCOMING EXAM</text>
+  <text x="195" y="184" font-family="'Inter', sans-serif" font-size="14" fill="#38bdf8" font-weight="700">Data Structures</text>
+  <rect x="195" y="196" width="150" height="6" rx="3" fill="#182e40"/>
+  <rect x="195" y="196" width="105" height="6" rx="3" fill="#38bdf8"/>
+  <text x="195" y="214" font-family="'Fira Code', monospace" font-size="9" fill="#10b981">T-Minus: 4 Days 12 Hrs</text>
+
+  <!-- Smart Reschedule Alert Card -->
+  <rect x="375" y="138" width="180" height="85" rx="8" fill="#17222c" stroke="#2a4537" stroke-width="1"/>
+  <circle cx="395" cy="158" r="7" fill="#10b981" opacity="0.2"/>
+  <text x="392" y="162" font-family="sans-serif" font-size="10" fill="#10b981">↺</text>
+  <text x="410" y="162" font-family="'Inter', sans-serif" font-size="10" fill="#34d399" font-weight="600">SMART RESCHEDULE</text>
+  <text x="390" y="182" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">1 Missed Session:</text>
+  <text x="390" y="198" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8">C Pointers & Memory</text>
+  <text x="390" y="214" font-family="'Fira Code', monospace" font-size="9" fill="#f59e0b">Auto-slotted to Sat 4 PM</text>
+
+  <!-- Subject Timetable Grid Strip -->
+  <rect x="180" y="238" width="375" height="92" rx="8" fill="#111c26" stroke="#1d3042" stroke-width="1"/>
+  <text x="195" y="258" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" font-weight="600">TODAY'S TIMETABLE</text>
+  
+  <rect x="195" y="268" width="80" height="50" rx="6" fill="#162838"/>
+  <text x="205" y="286" font-family="'Inter', sans-serif" font-size="11" fill="#38bdf8" font-weight="600">C Lang</text>
+  <text x="205" y="304" font-family="'Fira Code', monospace" font-size="9" fill="#64748b">09:00 - 10:30</text>
+
+  <rect x="285" y="268" width="80" height="50" rx="6" fill="#132e27"/>
+  <text x="295" y="286" font-family="'Inter', sans-serif" font-size="11" fill="#34d399" font-weight="600">Web Dev</text>
+  <text x="295" y="304" font-family="'Fira Code', monospace" font-size="9" fill="#64748b">11:00 - 12:30</text>
+
+  <rect x="375" y="268" width="85" height="50" rx="6" fill="#201f38"/>
+  <text x="385" y="286" font-family="'Inter', sans-serif" font-size="11" fill="#a78bfa" font-weight="600">Maths / CSE</text>
+  <text x="385" y="304" font-family="'Fira Code', monospace" font-size="9" fill="#64748b">02:00 - 03:30</text>
+
+  <rect x="470" y="268" width="75" height="50" rx="6" fill="#25241b"/>
+  <text x="480" y="286" font-family="'Inter', sans-serif" font-size="11" fill="#fbbf24" font-weight="600">Revision</text>
+  <text x="480" y="304" font-family="'Fira Code', monospace" font-size="9" fill="#64748b">05:00 - 06:00</text>
+</svg>
