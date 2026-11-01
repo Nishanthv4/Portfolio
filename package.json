@@ -1,13 +1,13 @@
 {
   "name": "nishanth_portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Nishanth V Developer Portfolio with In-Browser WebGPU AI Assistant",
   "main": "script.js",
   "type": "module",
   "homepage": "https://nishanthv4.github.io/Portfolio/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node -e \"import('fs').then(fs => fs.copyFileSync('script.js', 'dist/script.js'))\"",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -15,7 +15,6 @@
   "bugs": {
     "url": "https://github.com/Nishanthv4/Portfolio/issues"
   },
-  "homepage": "https://github.com/Nishanthv4/Portfolio#readme",
   "dependencies": {
     "@mlc-ai/web-llm": "^0.2.87",
     "marked": "^18.1.2"

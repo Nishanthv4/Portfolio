@@ -2492,16 +2492,32 @@ code {
   transform: translateY(-3px);
 }
 
-/* Reveal on Scroll Animations */
+/* Reveal on Scroll Animations (Failsafe & Smooth) */
 .reveal {
-  opacity: 0;
-  transform: translateY(22px);
+  opacity: 1;
+  transform: none;
   transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
-.reveal.visible {
+/* Only apply scroll hide if JavaScript observer is confirmed active */
+html.js-ready .reveal:not(.visible) {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+html.js-ready .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  html.js-ready .reveal:not(.visible),
+  html.js-ready .reveal.visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* --------------------------------------------------------------------------

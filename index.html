@@ -44,6 +44,26 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- No-JS Fallback: Ensure all sections are visible if JavaScript is disabled -->
+    <noscript>
+        <style>
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        </style>
+    </noscript>
+
+    <!-- Import Map for Direct Browser ES Module Resolution (Static Fallback) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "marked": "https://cdn.jsdelivr.net/npm/marked@12.0.2/+esm",
+            "@mlc-ai/web-llm": "https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.87/+esm"
+        }
+    }
+    </script>
 </head>
 
 <body>
@@ -113,7 +133,7 @@
             <div class="hero-container">
 
                 <!-- Left Hero Column: Personal Branding & Introduction -->
-                <div class="hero-content reveal">
+                <div class="hero-content">
                     <!-- Availability Badge -->
                     <div class="availability-badge" role="status">
                         <span class="status-pulse" aria-hidden="true"></span>
@@ -212,7 +232,7 @@
                 </div>
 
                 <!-- Right Hero Column: Interactive Terminal & Developer Visual -->
-                <div class="hero-visual reveal">
+                <div class="hero-visual">
 
                     <!-- Terminal Window Frame -->
                     <div class="terminal-card" id="terminalWindow" role="region"
@@ -2040,7 +2060,11 @@
     </aside>
 
     <!-- Main JavaScript Modules -->
-    <script type="module" src="/src/main.js"></script>
+        <!-- Main Portfolio Script (Instant, Dependency-Free ES6+) -->
+    <script src="script.js" defer></script>
+
+    <!-- AI Portfolio Assistant (Local In-Browser WebGPU) -->
+    <script type="module" src="assets/index.js"></script>
 </body>
 
 </html>

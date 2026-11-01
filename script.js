@@ -146,6 +146,7 @@
   const revealElements = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window && revealElements.length > 0) {
+    document.documentElement.classList.add('js-ready');
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -154,11 +155,16 @@
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.08,
+      rootMargin: '0px 0px -20px 0px'
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // Safety fallback: reveal all elements within 600ms so content is never hidden
+    setTimeout(() => {
+      revealElements.forEach(el => el.classList.add('visible'));
+    }, 600);
   } else {
     // Fallback if IntersectionObserver is not supported
     revealElements.forEach(el => el.classList.add('visible'));
