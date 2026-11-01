@@ -24,7 +24,7 @@ requireFile(path.join(assetsRoot, 'lib.js'), 'AI runtime bundle');
 const entrySource = fs.readFileSync(path.join(assetsRoot, 'index.js'), 'utf8');
 const assetFiles = fs.readdirSync(assetsRoot);
 const generatedWorkers = assetFiles.filter(name =>
-  /^ai-worker(?:-[\\w-]+)?\\.js$/.test(name)
+  name.startsWith('ai-worker') && name.endsWith('.js')
 );
 
 if (generatedWorkers.length === 0) {
