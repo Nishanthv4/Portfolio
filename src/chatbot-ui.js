@@ -43,6 +43,9 @@ export class ChatbotUI {
     this.initStatus = 'unloaded'; // 'unloaded' | 'loading' | 'ready' | 'error'
     this.selectedModelId = MODEL_METADATA.q4f16_id;
     this.rafId = null;
+    this.generationSequence = 0;
+    this.activeGenerationId = null;
+    this.conversationVersion = 0;
 
     this.initDOMElements();
     this.bindEvents();
@@ -98,8 +101,10 @@ export class ChatbotUI {
 
     if (this.stopBtn) {
       this.stopBtn.addEventListener('click', () => {
+        // Keep the request lock until the stream promise settles. Re-enabling
+        // Send immediately here can overlap two generations on the same engine.
         stopGeneration();
-        this.setGenerating(false);
+        this.stopBtn.disabled = true;
       });
     }
 
@@ -156,9 +161,10 @@ export class ChatbotUI {
       btn.className = 'ai-suggested-chip';
       btn.textContent = q;
       btn.addEventListener('click', () => {
+        const conversationVersion = this.conversationVersion;
         if (!isModelReady()) {
           this.startEngine().then((ready) => {
-            if (ready) {
+            if (ready && conversationVersion === this.conversationVersion) {
               this.sendMessage(q);
             }
           });
@@ -279,6 +285,7 @@ export class ChatbotUI {
     }
     if (this.stopBtn) {
       this.stopBtn.classList.toggle('hidden', !isGen);
+      this.stopBtn.disabled = !isGen;
     }
     if (this.inputField) {
       this.inputField.placeholder = isGen
@@ -293,6 +300,10 @@ export class ChatbotUI {
     const text = this.inputField.value.trim();
     if (!text) return;
 
+    // If the conversation is cleared while the model initializes, do not
+    // submit a message that belongs to the previous conversation state.
+    const conversationVersion = this.conversationVersion;
+
     // Immediately clear input field for responsiveness
     this.inputField.value = '';
     this.inputField.style.height = 'auto';
@@ -305,6 +316,7 @@ export class ChatbotUI {
       }
     }
 
+    if (conversationVersion !== this.conversationVersion) return;
     await this.sendMessage(text);
   }
 
@@ -312,32 +324,37 @@ export class ChatbotUI {
     if (this.isGenerating || !userText || !userText.trim()) return;
 
     const trimmedUserText = userText.trim();
+    const generationId = ++this.generationSequence;
+    const conversationVersion = this.conversationVersion;
+    this.activeGenerationId = generationId;
+
+    const isCurrentRequest = () =>
+      this.activeGenerationId === generationId &&
+      this.conversationVersion === conversationVersion;
 
     // Minimize suggested chips once chat starts
     if (this.suggestedBox) {
       this.suggestedBox.classList.add('minimized');
     }
 
-    // Display user message immediately in DOM
     this.appendUserMessage(trimmedUserText);
     this.conversationHistory.push({ role: 'user', content: trimmedUserText });
 
-    // Create assistant message placeholder with animated typing indicator
     const assistantBubble = this.createAssistantPlaceholder();
     this.setGenerating(true);
     this.scrollToBottom();
 
-    // Throttled streaming renderer using requestAnimationFrame to prevent layout thrashing
     let latestText = '';
     const throttledUpdate = (newText) => {
+      if (!isCurrentRequest()) return;
       latestText = newText;
+
       if (!this.rafId) {
         this.rafId = requestAnimationFrame(() => {
-          if (assistantBubble && latestText) {
-            assistantBubble.innerHTML = renderSafeMarkdown(latestText);
-          }
-          this.scrollToBottom();
           this.rafId = null;
+          if (!isCurrentRequest() || !assistantBubble || !latestText) return;
+          assistantBubble.innerHTML = renderSafeMarkdown(latestText);
+          this.scrollToBottom();
         });
       }
     };
@@ -346,27 +363,26 @@ export class ChatbotUI {
       const streamResult = await streamChatCompletion(
         this.conversationHistory,
         trimmedUserText,
-        (partialText) => {
-          throttledUpdate(partialText);
-        }
+        throttledUpdate
       );
 
-      // Cancel any pending RAF before final flush
+      // A cleared conversation invalidates every update from this request.
+      if (!isCurrentRequest()) return;
+
       if (this.rafId) {
         cancelAnimationFrame(this.rafId);
         this.rafId = null;
       }
 
-      // Handle user cancellation vs normal completion
       if (streamResult && streamResult.aborted) {
         if (!latestText) {
           if (assistantBubble) {
-            assistantBubble.innerHTML = `<em>[Response stopped by user]</em>`;
+            assistantBubble.innerHTML = '<em>[Response stopped by user]</em>';
           }
         } else if (assistantBubble) {
-          assistantBubble.innerHTML = renderSafeMarkdown(latestText) + `<br><small style="color:var(--text-muted);font-size:0.75rem;"><em>(Generation stopped)</em></small>`;
-        }
-        if (latestText) {
+          assistantBubble.innerHTML =
+            renderSafeMarkdown(latestText) +
+            '<br><small style="color:var(--text-muted);font-size:0.75rem;"><em>(Generation stopped)</em></small>';
           this.conversationHistory.push({ role: 'assistant', content: latestText });
         }
       } else {
@@ -383,15 +399,28 @@ export class ChatbotUI {
         cancelAnimationFrame(this.rafId);
         this.rafId = null;
       }
-      console.error('Chat error:', err);
-      if (assistantBubble) {
-        assistantBubble.innerHTML = `<span class="ai-error-inline">⚠️ Error generating response: ${this.escapeHTML(err.message || 'Generation failed')}. Please click Retry.</span>`;
+      if (isCurrentRequest()) {
+        console.error('Chat error:', err);
+        if (assistantBubble) {
+          assistantBubble.innerHTML =
+            `<span class="ai-error-inline">⚠️ Error generating response: ${this.escapeHTML(err.message || 'Generation failed')}. Please click Retry.</span>`;
+        }
       }
     } finally {
-      this.setGenerating(false);
-      this.scrollToBottom();
-      if (this.inputField) {
-        this.inputField.focus();
+      // A cancelled request still owns the UI lock until its promise settles.
+      // The generation id check prevents an older request from unlocking a newer one.
+      if (this.activeGenerationId === generationId) {
+        if (this.rafId) {
+          cancelAnimationFrame(this.rafId);
+          this.rafId = null;
+        }
+        this.activeGenerationId = null;
+        this.setGenerating(false);
+
+        if (this.conversationVersion === conversationVersion) {
+          this.scrollToBottom();
+          if (this.inputField) this.inputField.focus();
+        }
       }
     }
   }
@@ -441,10 +470,14 @@ export class ChatbotUI {
   }
 
   clearChat() {
+    // Invalidate any in-flight response before clearing the visible conversation.
+    // Keep the send lock until the interrupted stream actually settles.
     if (this.isGenerating) {
       stopGeneration();
-      this.setGenerating(false);
+      if (this.stopBtn) this.stopBtn.disabled = true;
     }
+
+    this.conversationVersion += 1;
 
     if (this.rafId) {
       cancelAnimationFrame(this.rafId);
