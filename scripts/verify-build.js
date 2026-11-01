@@ -22,7 +22,7 @@ requireFile(path.join(assetsRoot, 'index.js'), 'AI assistant entry bundle');
 requireFile(path.join(assetsRoot, 'lib.js'), 'AI runtime bundle');
 
 const entrySource = fs.readFileSync(path.join(assetsRoot, 'index.js'), 'utf8');
-const workerPattern = /new URL\(["']([^"']*ai-worker[^"']*\.js)["']/g;
+const workerPattern = /["']([^"']*ai-worker[^"']*\.js)["']/g;
 const workerReferences = [...entrySource.matchAll(workerPattern)]
   .map(match => path.basename(match[1].split('?')[0]));
 
