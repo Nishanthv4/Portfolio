@@ -7,10 +7,11 @@
   "scripts": {
     "dev": "vite",
     "build:ai": "node scripts/build-assistant.js",
-    "build": "node scripts/build-assistant.js && vite build && node -e \"import('fs').then(fs => fs.copyFileSync('script.js', 'dist/script.js'))\"",
+    "build": "node scripts/build-assistant.js && vite build && node -e \"import('fs').then(fs => fs.copyFileSync('script.js', 'dist/script.js'))\" && node scripts/verify-build.js",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "node test-suite.js"
   },
   "bugs": {
     "url": "https://github.com/Nishanthv4/Portfolio/issues"
