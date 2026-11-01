@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
+  <defs>
+    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="50%" stop-color="#0b1218"/>
+      <stop offset="100%" stop-color="#050a0e"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e2d3d" stroke-width="0.8" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Ambient Glow & Background -->
+  <circle cx="160" cy="160" r="150" fill="url(#ambientGlow)"/>
+  <circle cx="160" cy="160" r="140" fill="url(#avatarBg)" stroke="#1e2c38" stroke-width="2"/>
+  <circle cx="160" cy="160" r="139" fill="url(#gridPattern)"/>
+
+  <!-- Rotating tech rings & ticks -->
+  <circle cx="160" cy="160" r="128" fill="none" stroke="#1f3442" stroke-width="1.5" stroke-dasharray="6 8"/>
+  <circle cx="160" cy="160" r="120" fill="none" stroke="url(#ringGrad)" stroke-width="2" stroke-dasharray="160 50 80 40"/>
+
+  <!-- Developer Silhouette / Tech Graphic -->
+  <g transform="translate(0, 10)">
+    <!-- Base Node Circuit -->
+    <path d="M 90 220 C 90 185, 120 175, 160 175 C 200 175, 230 185, 230 220 Z" fill="#132330" stroke="#254359" stroke-width="2"/>
+    <circle cx="160" cy="135" r="42" fill="#162938" stroke="#2a4e68" stroke-width="2"/>
+    
+    <!-- Stylized Monogram Overlay -->
+    <text x="160" y="148" font-family="'Fira Code', 'Inter', monospace" font-size="36" font-weight="800" text-anchor="middle" fill="url(#textGrad)">NV</text>
+  </g>
+
+  <!-- Terminal Corner Accents -->
+  <path d="M 50 80 L 50 50 L 80 50" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 270 80 L 270 50 L 240 50" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 50 240 L 50 270 L 80 270" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 270 240 L 270 270 L 240 270" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Status Ping Badge -->
+  <g transform="translate(215, 225)">
+    <circle cx="12" cy="12" r="16" fill="#0b1319" stroke="#1e2c38" stroke-width="2"/>
+    <circle cx="12" cy="12" r="7" fill="#10b981"/>
+    <circle cx="12" cy="12" r="11" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.6"/>
+  </g>
+</svg>

@@ -1,0 +1,100 @@
+{
+  "profile": {
+    "name": "Nishanth V",
+    "headline": "Computer Science Student | Aspiring Cloud Engineer | Developer",
+    "education": {
+      "degree": "B.Tech in Computer Science and Engineering",
+      "academicYear": "First Year",
+      "institution": "R.M.D. Engineering College",
+      "location": "Tamil Nadu, India"
+    },
+    "careerObjective": "Develop strong computer science fundamentals, build practical software projects, gain internship experience, and prepare for a career in Cloud Engineering.",
+    "careerInterest": "Cloud Engineering, Software Development, Distributed Infrastructure, and Cloud Technologies",
+    "location": "Tamil Nadu, India",
+    "contact": {
+      "email": "nishanthv4@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/nishanth-v-129367360/",
+      "github": "https://github.com/Nishanthv4",
+      "twitter": "https://x.com/nishant61972303"
+    }
+  },
+  "technicalSkills": {
+    "programmingLanguages": ["C", "C++", "Python", "Java", "SQL"],
+    "webDevelopment": ["HTML5", "CSS3", "JavaScript", "React", "Node.js"],
+    "developerTools": ["Git", "GitHub", "VS Code"],
+    "cloudAndDevOps": ["Linux", "Docker", "AWS (Amazon Web Services)"],
+    "proficiencyStages": {
+      "confidentlyDemonstrating": ["C", "C++", "HTML5", "CSS3", "VS Code"],
+      "practicedThroughProjects": ["Python", "JavaScript", "Git", "GitHub"],
+      "learningAndExploring": ["Linux", "Docker", "AWS", "Java", "SQL", "React", "Node.js"]
+    }
+  },
+  "softSkills": [
+    "Problem Solving",
+    "Communication",
+    "Team Collaboration",
+    "Adaptability",
+    "Time Management",
+    "Continuous Learning",
+    "Critical Thinking"
+  ],
+  "projects": [
+    {
+      "name": "StudyMate",
+      "category": "Student Productivity / Study Planner",
+      "brief": "A student study planner designed to organize academic tasks, subjects, schedules, and deadlines with smart rescheduling.",
+      "problemSolved": "Helps college students avoid missed deadlines, organize complex semester timetables, and eliminate study backlogs through automated rescheduling.",
+      "keyFeatures": [
+        "Smart missed-task rescheduling",
+        "Exam countdown timer",
+        "Weekly timetable management",
+        "Calendar view",
+        "Local-first data storage with backup and restore"
+      ],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "LocalStorage API"],
+      "contribution": "Designed the complete UI/UX, implemented timetable data models, and built the local-first state persistence logic.",
+      "github": "https://github.com/Nishanthv4",
+      "status": "Active Project"
+    },
+    {
+      "name": "AI News Detector",
+      "category": "Artificial Intelligence / Web Development",
+      "brief": "An AI-assisted website designed to analyze news content and help users evaluate its credibility and contextual signals.",
+      "problemSolved": "Enables readers to identify sensationalized headlines, missing primary source citations, and hyperbolic wording without claiming to decide absolute truth.",
+      "keyFeatures": [
+        "News content linguistic analysis",
+        "AI-generated context explanations",
+        "Heuristic credibility indicators",
+        "Gemini API integration concept",
+        "Nuanced reporting format (does not make binary true/false judgments)"
+      ],
+      "technologies": ["JavaScript", "HTML5", "CSS3", "REST APIs", "Gemini API concept"],
+      "contribution": "Conceptualized the credibility indicator taxonomy, constructed the web interface, and integrated response rendering logic.",
+      "github": "https://github.com/Nishanthv4",
+      "status": "Research Concept & Active Build"
+    },
+    {
+      "name": "Cloud Infrastructure & Microservices",
+      "category": "Cloud / DevOps & Systems Exploration",
+      "brief": "Upcoming academic and hackathon build exploring containerized microservices, automated CI/CD pipelines, and AWS cloud deployments.",
+      "problemSolved": "Learning end-to-end containerized deployments, Linux administration, and scalable cloud service provisioning.",
+      "keyFeatures": [
+        "Docker containerization",
+        "Linux system scripting",
+        "AWS EC2 and S3 basics",
+        "Automated GitHub Actions CI/CD pipelines"
+      ],
+      "technologies": ["Docker", "Linux", "AWS", "Git CI/CD"],
+      "status": "In Architecture & Planning"
+    }
+  ],
+  "certificationsAndAchievements": {
+    "status": "Currently a First-Year Computer Science undergraduate actively preparing for foundational certifications in Cloud Computing (AWS Certified Cloud Practitioner track) and collegiate hackathons. Verified certificates will be published upon completion."
+  },
+  "experience": {
+    "academicExperience": "First-year coursework at R.M.D. Engineering College (Department of CSE) including programming methodology, C/C++ laboratory practicals, and computing seminars.",
+    "internshipStatus": "Currently seeking software development and cloud engineering internship opportunities for summer/winter.",
+    "extracurricular": "Participating in campus coding clubs, peer study circles, and collaborative hackathon preparation."
+  }
+}
+

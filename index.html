@@ -1,19 +1,2046 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Nishanth V — Computer Science student and aspiring cloud engineer">
-<title>Nishanth V | Developer Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"></head><body>
-<header class="topbar"><a class="brand" href="#home"><b>N</b> nishanth<span>.dev</span></a>
-<button id="menuToggle" aria-label="Toggle menu">☰</button><nav id="nav"><a href="#about">about</a><a href="#skills">skills</a><a href="#projects">projects</a><a href="#contact">contact</a></nav><a class="resume" href="assets/resume.pdf" download>resume ↗</a></header>
-<main>
-<section class="hero section" id="home"><div><p class="eyebrow">● AVAILABLE FOR LEARNING & COLLABORATION</p><h1>Hi, I'm <em>Nishanth V</em><br><small>I build things for the web.</small></h1><p class="lead">A Computer Science student exploring software development, problem solving, and cloud technologies — one project at a time.</p><a class="btn" href="#projects">Explore my work →</a> <a class="btn outline" href="#contact">Get in touch</a><div class="social"><a href="https://github.com/" target="_blank">GitHub ↗</a><a href="https://linkedin.com/" target="_blank">LinkedIn ↗</a><a href="mailto:your.email@example.com">Email ↗</a></div></div>
-<div class="terminal reveal"><div class="bar"><span>● ● ●</span> visitor@nishanth: ~ <span>•••</span></div><div class="term"><p><i>visitor@nishanth</i>:<b>~</b>$ whoami</p><p class="out">Computer Science student</p><p><i>visitor@nishanth</i>:<b>~</b>$ cat interests.txt</p><p class="out">Web Development<br>Cloud Computing<br>Problem Solving</p><p><i>visitor@nishanth</i>:<b>~</b>$ <span id="typing"></span><strong class="cursor">▋</strong></p></div></div></section>
-<section class="section" id="about"><h2><label>01 /</label> About <em>me</em></h2><div class="two"><div class="reveal"><p class="comment">// a little introduction</p><p>I'm a first-year <strong>Computer Science and Engineering</strong> student at R.M.D. Engineering College, Tamil Nadu.</p><p>I enjoy learning by building practical projects, understanding how systems work, and improving my programming and problem-solving skills.</p><p>I'm currently building my foundations in programming and exploring cloud engineering.</p></div><div class="panel reveal"><p><span>name</span>Nishanth V</p><p><span>education</span>B.Tech — CSE</p><p><span>institution</span>R.M.D. Engineering College</p><p><span>focus</span>Development · Cloud</p><p><span>location</span>Tamil Nadu, India</p></div></div></section>
-<section class="section" id="skills"><h2><label>02 /</label> Tech <em>stack</em></h2><p class="sub">Tools and technologies I'm learning and working with.</p><div class="cards four"><article class="card reveal"><big>⌘</big><h3>Programming</h3><p>C · C++ · Python</p><small>FOUNDATIONS</small></article><article class="card reveal"><big>⌁</big><h3>Web</h3><p>HTML · CSS · JavaScript</p><small>LEARNING</small></article><article class="card reveal"><big>⑂</big><h3>Developer tools</h3><p>Git · GitHub · VS Code</p><small>EXPLORING</small></article><article class="card reveal"><big>☁</big><h3>Cloud & systems</h3><p>Linux · Docker · AWS</p><small>EXPLORING</small></article></div><p class="note">Update these skills and levels to accurately reflect your current experience.</p></section>
-<section class="section" id="projects"><h2><label>03 /</label> Featured <em>projects</em></h2><p class="sub">A few ideas and builds from my learning journey.</p><div class="cards three"><article class="project reveal"><small>01 / STUDENT TOOL</small><h3>StudyMate</h3><p>A student study planner concept to organize subjects, deadlines, and study sessions, with missed-task rescheduling.</p><div class="tags">HTML/CSS · JavaScript · AI exploration</div><a href="https://github.com/" target="_blank">Source code ↗</a></article><article class="project reveal"><small>02 / AI CONCEPT</small><h3>AI News Detector</h3><p>A web app concept that helps users examine news claims and view an AI-generated assessment with supporting context.</p><div class="tags">JavaScript · Gemini API · Vercel</div><a href="https://github.com/" target="_blank">Source code ↗</a></article><article class="project dashed reveal"><small>03 / COMING SOON</small><h3>Next project</h3><p>I'm strengthening my fundamentals and turning new ideas into useful projects.</p><div class="tags">Learning · Building</div><a href="#contact">Suggest an idea ↗</a></article></div></section>
-<section class="section"><h2><label>04 /</label> Learning <em>journey</em></h2><div class="timeline"><article class="reveal"><small>2026 — NOW</small><div><h3>B.Tech Computer Science & Engineering</h3><p>Building a strong foundation in programming, computer science, and practical development.</p></div></article><article class="reveal"><small>ONGOING</small><div><h3>Exploring cloud engineering</h3><p>Learning about cloud platforms, infrastructure, and tools used to build and deploy applications.</p></div></article></div></section>
-<section class="section" id="contact"><h2><label>05 /</label> Let's <em>connect</em></h2><div class="contact reveal"><div><p class="comment">// have an idea or opportunity?</p><h3>Let's build something<br><em>meaningful.</em></h3><p>I'm open to learning opportunities, project collaborations, and connecting with fellow developers.</p></div><a class="btn" href="mailto:your.email@example.com">Say hello ↗</a></div></section>
-</main><footer><a class="brand" href="#home"><b>N</b> nishanth<span>.dev</span></a><p>Designed & built with curiosity <em>♥</em></p><span>© <span id="year"></span> Nishanth V</span></footer><button id="top" aria-label="Back to top">↑</button><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary Meta Tags -->
+    <title>Nishanth V | Computer Science Student &amp; Aspiring Cloud Engineer</title>
+    <meta name="title" content="Nishanth V | Computer Science Student &amp; Aspiring Cloud Engineer">
+    <meta name="description"
+        content="Portfolio of Nishanth V, First-Year Computer Science and Engineering student at R.M.D. Engineering College, Tamil Nadu. Focused on Cloud Technologies, Software Development, and Practical Engineering Projects.">
+    <meta name="keywords"
+        content="Nishanth V, Nishanth portfolio, Cloud Engineer, Computer Science Student, R.M.D. Engineering College, StudyMate, AI News Detector, Python, C++, Docker, AWS">
+    <meta name="author" content="Nishanth V">
+    <meta name="theme-color" content="#080d12">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nishanthv4.github.io/Portfolio/">
+    <meta property="og:title" content="Nishanth V | Developer Portfolio">
+    <meta property="og:description"
+        content="Computer Science student at R.M.D. Engineering College exploring software development, problem solving, and cloud technologies.">
+    <meta property="og:image" content="assets/avatar.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nishanthv4.github.io/Portfolio/">
+    <meta property="twitter:title" content="Nishanth V | Developer Portfolio">
+    <meta property="twitter:description"
+        content="Computer Science student at R.M.D. Engineering College exploring software development, problem solving, and cloud technologies.">
+    <meta property="twitter:image" content="assets/avatar.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <!-- Google Fonts: Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div id="scrollProgress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ========================================================================= -->
+    <!-- NAVIGATION BAR                                                            -->
+    <!-- ========================================================================= -->
+    <header class="topbar" id="header">
+        <div class="topbar-inner">
+            <a class="brand" href="#home" aria-label="Nishanth V Portfolio Home">
+                <span class="brand-badge">N</span>
+                <span class="brand-name">nishanth<span class="brand-accent">.dev</span></span>
+            </a>
+
+            <!-- Desktop & Drawer Navigation -->
+            <nav id="nav" class="nav-menu" aria-label="Main Navigation">
+                <a href="#home" class="nav-link active"><span class="nav-num">00.</span>Home</a>
+                <a href="#about" class="nav-link"><span class="nav-num">01.</span>About</a>
+                <a href="#projects" class="nav-link"><span class="nav-num">02.</span>Projects</a>
+                <a href="#skills" class="nav-link"><span class="nav-num">03.</span>Skills</a>
+                <a href="#certifications" class="nav-link"><span class="nav-num">04.</span>Certifications</a>
+                <a href="#experience" class="nav-link"><span class="nav-num">05.</span>Experience</a>
+                <a href="#contact" class="nav-link"><span class="nav-num">06.</span>Contact</a>
+            </nav>
+
+            <!-- Nav Action Button -->
+            <div class="topbar-actions">
+                <a class="btn-nav-resume" href="assets/resume.pdf" download="Nishanth_V_Resume.pdf"
+                    title="Download Nishanth's Resume (PDF)">
+                    <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Resume</span>
+                </a>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="menuToggle" class="menu-toggle-btn" aria-label="Open navigation menu" aria-expanded="false"
+                    aria-controls="nav">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Backdrop overlay for mobile menu -->
+    <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+
+    <!-- ========================================================================= -->
+    <!-- MAIN CONTENT                                                              -->
+    <!-- ========================================================================= -->
+    <main id="main-content">
+
+        <!-- ======================================================================= -->
+        <!-- SECTION 1: HOME PAGE & PROFESSIONAL INTRODUCTION                        -->
+        <!-- ======================================================================= -->
+        <section class="hero-section section" id="home" aria-label="Introduction">
+            <div class="hero-container">
+
+                <!-- Left Hero Column: Personal Branding & Introduction -->
+                <div class="hero-content reveal">
+                    <!-- Availability Badge -->
+                    <div class="availability-badge" role="status">
+                        <span class="status-pulse" aria-hidden="true"></span>
+                        <span class="badge-text">AVAILABLE FOR LEARNING &amp; COLLABORATION</span>
+                        <span class="badge-tag">First-Year CSE</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="greeting">Hi, I'm</span>
+                        <span class="name-highlight">Nishanth V</span>
+                        <span class="hero-headline">Computer Science Student | Aspiring Cloud Engineer |
+                            Developer</span>
+                    </h1>
+
+                    <p class="hero-lead">
+                        I am a first-year Computer Science and Engineering student at <strong>R.M.D. Engineering
+                            College</strong>, Tamil Nadu.
+                        I focus on developing strong computer science fundamentals, building practical software
+                        solutions, and mastering cloud technologies to engineer scalable systems.
+                    </p>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#projects">
+                            <span>Explore My Projects</span>
+                            <svg class="btn-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a class="btn btn-outline" href="assets/resume.pdf" download="Nishanth_V_Resume.pdf">
+                            <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Download Resume</span>
+                        </a>
+                        <a class="btn btn-ghost" href="#contact">Get In Touch</a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="social-links-bar" aria-label="Social and code repository links">
+                        <a href="https://github.com/Nishanthv4" target="_blank" rel="noopener noreferrer"
+                            class="social-link" title="Nishanth V on GitHub">
+                            <svg class="social-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"
+                                aria-hidden="true">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            <span>GitHub</span>
+                            <span class="external-arrow">↗</span>
+                        </a>
+
+                        <!-- LINKEDIN LINK -->
+                        <a href="https://www.linkedin.com/in/nishanth-v-129367360/" target="_blank"
+                            rel="noopener noreferrer" class="social-link" title="Nishanth V on LinkedIn">
+                            <svg class="social-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"
+                                aria-hidden="true">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            <span>LinkedIn</span>
+                            <span class="external-arrow">↗</span>
+                        </a>
+
+                        <!-- X / TWITTER LINK -->
+                        <a href="https://x.com/nishant61972303" target="_blank" rel="noopener noreferrer"
+                            class="social-link" title="Nishanth V on X (Twitter)">
+                            <svg class="social-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"
+                                aria-hidden="true">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                            <span>X / Twitter</span>
+                            <span class="external-arrow">↗</span>
+                        </a>
+
+                        <!-- EMAIL LINK (OPENS GMAIL) -->
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nishanthv4@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Send email to Nishanth V via Gmail">
+                            <svg class="social-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>Email</span>
+                            <span class="external-arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Column: Interactive Terminal & Developer Visual -->
+                <div class="hero-visual reveal">
+
+                    <!-- Terminal Window Frame -->
+                    <div class="terminal-card" id="terminalWindow" role="region"
+                        aria-label="Interactive Developer Terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons" aria-hidden="true">
+                                <span class="btn-dot dot-red"></span>
+                                <span class="btn-dot dot-yellow"></span>
+                                <span class="btn-dot dot-green"></span>
+                            </div>
+                            <div class="terminal-title">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" aria-hidden="true">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                <span>visitor@nishanth-workstation:~ (bash)</span>
+                            </div>
+                            <div class="terminal-status-chip">ONLINE</div>
+                        </div>
+
+                        <div class="terminal-body" id="terminalBody">
+                            <!-- Command 1: Identity -->
+                            <div class="terminal-line">
+                                <span class="term-user">visitor@nishanth</span><span class="term-colon">:</span><span
+                                    class="term-path">~</span><span class="term-prompt">$</span>
+                                <span class="term-cmd">whoami</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="out-key">Name:</span> <span class="out-val">Nishanth V</span><br>
+                                <span class="out-key">Role:</span> <span class="out-accent">Computer Science &amp;
+                                    Engineering Student</span><br>
+                                <span class="out-key">College:</span> <span class="out-val">R.M.D. Engineering College,
+                                    Tamil Nadu</span><br>
+                                <span class="out-key">Academic Level:</span> <span class="out-highlight">First Year (Sem
+                                    1)</span>
+                            </div>
+
+                            <!-- Command 2: System Spec & Objectives -->
+                            <div class="terminal-line">
+                                <span class="term-user">visitor@nishanth</span><span class="term-colon">:</span><span
+                                    class="term-path">~</span><span class="term-prompt">$</span>
+                                <span class="term-cmd">cat career_objective.md</span>
+                            </div>
+                            <div class="terminal-output">
+                                <p class="term-desc">
+                                    "Develop strong computer science fundamentals, build practical software projects,
+                                    gain internship experience, and prepare for a career in Cloud Engineering."
+                                </p>
+                            </div>
+
+                            <!-- Command 3: Active Focus / Interests -->
+                            <div class="terminal-line">
+                                <span class="term-user">visitor@nishanth</span><span class="term-colon">:</span><span
+                                    class="term-path">~</span><span class="term-prompt">$</span>
+                                <span class="term-cmd">status --target</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="status-row"><span class="out-dot">●</span> Cloud Technologies: <span
+                                        class="out-cyan">Linux · Docker · AWS (Learning)</span></span>
+                                <span class="status-row"><span class="out-dot">●</span> Software Dev: <span
+                                        class="out-green">C · C++ · Python · JavaScript</span></span>
+                                <span class="status-row"><span class="out-dot">●</span> Projects: <span
+                                        class="out-yellow">StudyMate · AI News Detector</span></span>
+                            </div>
+
+                            <!-- Command 4: Interactive Typing Prompt -->
+                            <div class="terminal-line active-line">
+                                <span class="term-user">visitor@nishanth</span><span class="term-colon">:</span><span
+                                    class="term-path">~</span><span class="term-prompt">$</span>
+                                <span class="term-cmd" id="typingText"></span><span class="typing-cursor"
+                                    aria-hidden="true">█</span>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Quick Commands Toolbar -->
+                        <div class="terminal-footer">
+                            <span class="term-pill-label">Quick Commands:</span>
+                            <div class="term-pills" role="toolbar" aria-label="Terminal command shortcuts">
+                                <button type="button" class="term-pill" data-cmd="interests">interests</button>
+                                <button type="button" class="term-pill" data-cmd="stack">tech-stack</button>
+                                <button type="button" class="term-pill" data-cmd="contact">contact-info</button>
+                                <button type="button" class="term-pill" data-cmd="clear">clear</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Developer Profile Card Placeholder (Swappable with personal photo) -->
+                    <div class="profile-badge-card">
+                        <div class="avatar-wrapper">
+                            <!-- Replaced with clean developer avatar SVG; can easily be replaced with a real image photo in assets/ -->
+                            <img src="assets/avatar.svg" alt="Nishanth V - Developer Profile Placeholder"
+                                class="profile-avatar" width="70" height="70" loading="eager">
+                            <span class="avatar-ring" aria-hidden="true"></span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-name">Nishanth V</div>
+                            <div class="profile-subtitle">B.Tech CSE · R.M.D. Engineering College</div>
+                            <div class="profile-location">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Tamil Nadu, India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================= -->
+        <!-- SECTION 2: ABOUT ME                                                     -->
+        <!-- ======================================================================= -->
+        <section class="section about-section" id="about" aria-label="About Nishanth V">
+            <div class="section-container">
+
+                <div class="section-header reveal">
+                    <span class="section-number">01 / ABOUT ME</span>
+                    <h2 class="section-title">Engineering Mindset &amp; <em>Foundations</em></h2>
+                    <p class="section-subtitle">Understanding how computer systems function from low-level logic to
+                        high-level cloud architectures.</p>
+                </div>
+
+                <div class="about-grid">
+
+                    <!-- Narrative Bio -->
+                    <div class="about-narrative card-panel reveal">
+                        <div class="panel-tag">// personal narrative</div>
+                        <h3 class="narrative-heading">Who I Am</h3>
+                        <p>
+                            I am a first-year undergraduate student pursuing <strong>B.Tech in Computer Science and
+                                Engineering</strong> at
+                            <strong>R.M.D. Engineering College</strong> in Tamil Nadu, India.
+                        </p>
+
+                        <h4 class="narrative-subheading">Why I Chose Computer Science</h4>
+                        <p>
+                            I chose Computer Science and Engineering because I am captivated by how software translates
+                            mathematical logic
+                            and algorithmic structures into scalable digital solutions. Rather than merely consuming
+                            technology, I want to understand
+                            how operating systems manage resources, how compilers optimize instructions, and how
+                            networked systems communicate across
+                            continents.
+                        </p>
+
+                        <h4 class="narrative-subheading">Interest in Programming &amp; Cloud Engineering</h4>
+                        <p>
+                            My journey began by establishing core programming foundations in <strong>C, C++, and
+                                Python</strong>.
+                            As I developed an appreciation for system architecture, I found myself drawn toward
+                            <strong>Cloud Engineering and DevOps</strong>.
+                            The ability to package applications with <strong>Docker</strong>, manage servers on
+                            <strong>Linux</strong>, and deploy globally resilient
+                            infrastructure on <strong>AWS</strong> represents the future of software scalability.
+                        </p>
+
+                        <h4 class="narrative-subheading">My Practical Learning Philosophy</h4>
+                        <p>
+                            I firmly believe that theoretical knowledge only becomes permanent when validated through
+                            real software.
+                            By building tools like <strong>StudyMate</strong> and exploring projects like the <strong>AI
+                                News Detector</strong>,
+                            I confront edge cases, debug real failures, and write cleaner, more maintainable code every
+                            single day.
+                        </p>
+
+                        <h4 class="narrative-subheading">Long-Term Professional Goals</h4>
+                        <p>
+                            My goal is to master fundamental algorithms and data structures, build practical full-stack
+                            and cloud-backed software,
+                            gain competitive internship experience, and build a career as a high-impact <strong>Cloud
+                                Engineer</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Quick Specifications & Overview Panel -->
+                    <div class="about-specs card-panel reveal">
+                        <div class="panel-tag">// developer specifications</div>
+                        <h3 class="narrative-heading">System Profile</h3>
+
+                        <dl class="specs-list">
+                            <div class="spec-row">
+                                <dt>Name</dt>
+                                <dd>Nishanth V</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Degree</dt>
+                                <dd>B.Tech — Computer Science &amp; Engineering</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Institution</dt>
+                                <dd>R.M.D. Engineering College</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Academic Level</dt>
+                                <dd>First Year (Semester 1)</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Location</dt>
+                                <dd>Tamil Nadu, India</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Primary Focus</dt>
+                                <dd class="spec-accent">Cloud Engineering &amp; Software Dev</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Languages</dt>
+                                <dd>C, C++, Python, JavaScript</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Tools</dt>
+                                <dd>Git, GitHub, VS Code</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Cloud Focus</dt>
+                                <dd class="spec-highlight">Linux · Docker · AWS (Active Study)</dd>
+                            </div>
+                        </dl>
+
+
+                    </div>
+
+                </div>
+
+                <!-- Section: My Learning Journey Timeline -->
+                <div class="learning-journey-block reveal">
+                    <div class="subsection-header">
+                        <span class="pill-code">// MILESTONES</span>
+                        <h3 class="subsection-title">My Learning Journey</h3>
+                        <p class="subsection-desc">A progression-based roadmap tracking foundational knowledge, hands-on
+                            experiments, and future milestones.</p>
+                    </div>
+
+                    <div class="journey-timeline" role="list">
+
+                        <!-- Stage 1 -->
+                        <div class="timeline-step" role="listitem">
+                            <div class="step-marker" aria-hidden="true">
+                                <span class="marker-dot"></span>
+                                <span class="marker-line"></span>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-tag">STAGE 01 — FOUNDATIONS</div>
+                                <h4 class="step-title">Started Learning Programming</h4>
+                                <p class="step-desc">
+                                    Began with fundamental computing principles, logic building, memory management, and
+                                    control flow using
+                                    <strong>C and C++</strong>, complemented by modular scripting in
+                                    <strong>Python</strong>.
+                                </p>
+                                <div class="step-tech-chips">
+                                    <span>C</span>
+                                    <span>C++</span>
+                                    <span>Python</span>
+                                    <span>Problem Solving</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 2 -->
+                        <div class="timeline-step" role="listitem">
+                            <div class="step-marker" aria-hidden="true">
+                                <span class="marker-dot"></span>
+                                <span class="marker-line"></span>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-tag">STAGE 02 — CLIENT INTERFACES</div>
+                                <h4 class="step-title">Developed Interest in Web Development</h4>
+                                <p class="step-desc">
+                                    Explored frontend technologies to create interactive user experiences. Learned
+                                    semantic <strong>HTML5</strong>,
+                                    responsive styling with <strong>CSS3</strong>, modern layouts, and DOM manipulation
+                                    using <strong>JavaScript</strong>.
+                                </p>
+                                <div class="step-tech-chips">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                    <span>Responsive UI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 3 -->
+                        <div class="timeline-step" role="listitem">
+                            <div class="step-marker" aria-hidden="true">
+                                <span class="marker-dot"></span>
+                                <span class="marker-line"></span>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-tag">STAGE 03 — PRACTICAL IMPLEMENTATION</div>
+                                <h4 class="step-title">Started Building Practical Projects</h4>
+                                <p class="step-desc">
+                                    Applied programming skills to real software solutions. Architected
+                                    <strong>StudyMate</strong> (a student productivity planner)
+                                    and the <strong>AI News Detector</strong> concept for evaluating media credibility.
+                                </p>
+                                <div class="step-tech-chips">
+                                    <span>StudyMate</span>
+                                    <span>AI News Detector</span>
+                                    <span>Local-First Dev</span>
+                                    <span>Git Workflow</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 4 -->
+                        <div class="timeline-step" role="listitem">
+                            <div class="step-marker" aria-hidden="true">
+                                <span class="marker-dot"></span>
+                                <span class="marker-line"></span>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-tag">STAGE 04 — INFRASTRUCTURE (CURRENT)</div>
+                                <h4 class="step-title">Exploring Cloud Computing &amp; DevOps Technologies</h4>
+                                <p class="step-desc">
+                                    Actively delving into cloud architecture: mastering <strong>Linux command
+                                        line</strong> administration,
+                                    containerization with <strong>Docker</strong>, and fundamental cloud service models
+                                    on <strong>Amazon Web Services (AWS)</strong>.
+                                </p>
+                                <div class="step-tech-chips">
+                                    <span>Linux</span>
+                                    <span>Docker</span>
+                                    <span>AWS</span>
+                                    <span>Virtualization</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 5 -->
+                        <div class="timeline-step" role="listitem">
+                            <div class="step-marker" aria-hidden="true">
+                                <span class="marker-dot"></span>
+                                <span class="marker-line"></span>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-tag">STAGE 05 — CAREER READINESS (AHEAD)</div>
+                                <h4 class="step-title">Working Towards Internship &amp; Placement Preparation</h4>
+                                <p class="step-desc">
+                                    Deepening data structure and algorithm mastery, participating in hackathons,
+                                    contributing to open-source software,
+                                    and positioning for high-impact software and cloud engineering internships.
+                                </p>
+                                <div class="step-tech-chips">
+                                    <span>Data Structures</span>
+                                    <span>System Design</span>
+                                    <span>Internship Ready</span>
+                                    <span>Cloud Engineering</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Section: What Drives Me (3 Themes) -->
+                <div class="what-drives-me-block reveal">
+                    <div class="subsection-header">
+                        <span class="pill-code">// CORE PRINCIPLES</span>
+                        <h3 class="subsection-title">What Drives Me</h3>
+                        <p class="subsection-desc">Three guiding pillars that define my approach to technology,
+                            development, and engineering.</p>
+                    </div>
+
+                    <div class="drives-grid">
+
+                        <div class="drive-card">
+                            <div class="drive-icon-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="drive-title">Continuous Learning</h4>
+                            <p class="drive-desc">
+                                Technology evolves constantly. I maintain curiosity by reading documentation, testing
+                                emerging cloud concepts,
+                                and refining my mental models through systematic experimentation.
+                            </p>
+                        </div>
+
+                        <div class="drive-card">
+                            <div class="drive-icon-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <h4 class="drive-title">Practical Problem Solving</h4>
+                            <p class="drive-desc">
+                                Engineering is the craft of turning theoretical knowledge into functioning systems that
+                                eliminate real friction.
+                                I focus on breaking large problems into clear, modular components.
+                            </p>
+                        </div>
+
+                        <div class="drive-card">
+                            <div class="drive-icon-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                </svg>
+                            </div>
+                            <h4 class="drive-title">Building Useful Technology</h4>
+                            <p class="drive-desc">
+                                I prioritize clean architecture, accessible interfaces, and reliable data persistence.
+                                Software should genuinely serve its users, solve legitimate needs, and stand up to
+                                rigorous everyday use.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================= -->
+        <!-- SECTION 3: ACADEMIC & PERSONAL PROJECTS                                 -->
+        <!-- ======================================================================= -->
+        <section class="section projects-section" id="projects" aria-label="Projects Gallery">
+            <div class="section-container">
+
+                <div class="section-header reveal">
+                    <span class="section-number">02 / PORTFOLIO WORK</span>
+                    <h2 class="section-title">Academic &amp; Personal <em>Projects</em></h2>
+                    <p class="section-subtitle">Real software builds demonstrating problem solving, responsive user
+                        interfaces, and architectural exploration.</p>
+                </div>
+
+                <!-- Project Category Filters -->
+                <div class="project-filter-bar reveal" role="tablist" aria-label="Filter projects by category">
+                    <button type="button" class="filter-btn active" data-filter="all" role="tab"
+                        aria-selected="true">All Projects</button>
+                    <button type="button" class="filter-btn" data-filter="academic" role="tab"
+                        aria-selected="false">Academic</button>
+                    <button type="button" class="filter-btn" data-filter="personal" role="tab"
+                        aria-selected="false">Personal</button>
+                    <button type="button" class="filter-btn" data-filter="web-dev" role="tab" aria-selected="false">Web
+                        Development</button>
+                    <button type="button" class="filter-btn" data-filter="ai-ml" role="tab" aria-selected="false">AI /
+                        ML</button>
+                    <button type="button" class="filter-btn" data-filter="cloud-devops" role="tab"
+                        aria-selected="false">Cloud / DevOps</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid" id="projectsGrid">
+
+                    <!-- PROJECT 1: STUDYMATE -->
+                    <article class="project-card reveal" data-category="academic personal web-dev"
+                        id="project-studymate">
+                        <div class="project-media">
+                            <img src="assets/StudyMate.png" alt="StudyMate Student Study Planner Interface Preview"
+                                class="project-img" loading="lazy">
+                            <div class="project-category-badge">Student Productivity / Planner</div>
+                        </div>
+
+                        <div class="project-details">
+                            <div class="project-meta">
+                                <span class="project-id">PROJECT_01</span>
+                                <span class="project-status in-dev">ACTIVE BUILD</span>
+                            </div>
+
+                            <h3 class="project-name">StudyMate</h3>
+                            <p class="project-brief">
+                                A student study planner designed to organize academic tasks, subjects, schedules, and
+                                deadlines with smart rescheduling.
+                            </p>
+
+                            <!-- Problem Solved Section -->
+                            <div class="project-feature-highlight">
+                                <strong>Problem it Solves:</strong>
+                                <p>Helps college students avoid missed deadlines, organize complex semester timetables,
+                                    and eliminate study backlog through automated rescheduling.</p>
+                            </div>
+
+                            <!-- Key Features List -->
+                            <div class="project-key-features">
+                                <span class="feat-tag">Smart Missed-Task Rescheduling</span>
+                                <span class="feat-tag">Exam Countdown Timer</span>
+                                <span class="feat-tag">Weekly Timetable Manager</span>
+                                <span class="feat-tag">Local-First Storage</span>
+                                <span class="feat-tag">Backup &amp; Restore</span>
+                            </div>
+
+                            <!-- Tech Stack Tags -->
+                            <div class="project-tech-stack" aria-label="Technologies used">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>LocalStorage API</span>
+                            </div>
+
+                            <!-- Contribution Note -->
+                            <div class="project-contribution">
+                                <small><strong>My Contribution:</strong> Designed the complete UI/UX, implemented the
+                                    timetable data structures, and authored the local-first state persistence
+                                    logic.</small>
+                            </div>
+
+                            <!-- Action Links -->
+                            <div class="project-links">
+                                <a href="https://github.com/Nishanthv4" target="_blank" rel="noopener noreferrer"
+                                    class="proj-btn proj-btn-github" title="View StudyMate Source Code on GitHub">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                                    </svg>
+                                    <span>Source Code</span>
+                                </a>
+                                <button type="button" class="proj-btn proj-btn-details" data-modal="modal-studymate">
+                                    <span>Architecture Details</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 2: AI NEWS DETECTOR -->
+                    <article class="project-card reveal" data-category="academic personal web-dev ai-ml"
+                        id="project-ainews">
+                        <div class="project-media">
+                            <img src="assets/ai-news-detector.png"
+                                alt="AI News Detector Credibility Analysis Interface Preview" class="project-img"
+                                loading="lazy">
+                            <div class="project-category-badge">Artificial Intelligence / Web Dev</div>
+                        </div>
+
+                        <div class="project-details">
+                            <div class="project-meta">
+                                <span class="project-id">PROJECT_02</span>
+                                <span class="project-status in-dev">AI RESEARCH CONCEPT</span>
+                            </div>
+
+                            <h3 class="project-name">AI News Detector</h3>
+                            <p class="project-brief">
+                                An AI-assisted website designed to analyze news content and help users evaluate its
+                                credibility and contextual signals.
+                            </p>
+
+                            <!-- Problem Solved Section -->
+                            <div class="project-feature-highlight">
+                                <strong>Problem it Solves:</strong>
+                                <p>Enables readers to identify sensationalized headlines, missing primary source
+                                    citations, and hyperbolic wording without claiming to decide absolute truth.</p>
+                            </div>
+
+                            <!-- Key Features List -->
+                            <div class="project-key-features">
+                                <span class="feat-tag">News Content Linguistic Analysis</span>
+                                <span class="feat-tag">AI-Generated Context Explanations</span>
+                                <span class="feat-tag">Heuristic Credibility Indicators</span>
+                                <span class="feat-tag">Gemini API Integration Concept</span>
+                                <span class="feat-tag">Nuanced Reporting Format</span>
+                            </div>
+
+                            <!-- Tech Stack Tags -->
+                            <div class="project-tech-stack" aria-label="Technologies used">
+                                <span>JavaScript</span>
+                                <span>Gemini API (Concept)</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>REST APIs</span>
+                            </div>
+
+                            <!-- Contribution Note -->
+                            <div class="project-contribution">
+                                <small><strong>My Contribution:</strong> Conceptualized the credibility indicator
+                                    taxonomy, constructed the web interface, and integrated response rendering
+                                    logic.</small>
+                            </div>
+
+                            <!-- Action Links -->
+                            <div class="project-links">
+                                <a href="https://github.com/Nishanthv4" target="_blank" rel="noopener noreferrer"
+                                    class="proj-btn proj-btn-github"
+                                    title="View AI News Detector Source Code on GitHub">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                                    </svg>
+                                    <span>Source Code</span>
+                                </a>
+                                <button type="button" class="proj-btn proj-btn-details" data-modal="modal-ainews">
+                                    <span>Architecture Details</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 3: FUTURE PROJECTS PLACEHOLDER -->
+                    <!-- EDITABLE TEMPLATE: Duplicate this card to add new projects as you build them! -->
+                    <article class="project-card project-card-placeholder reveal"
+                        data-category="cloud-devops academic personal" id="project-future">
+                        <div class="project-media">
+                            <img src="assets/future-project.svg"
+                                alt="Blueprint Placeholder for Upcoming Cloud Engineering Projects" class="project-img"
+                                loading="lazy">
+                            <div class="project-category-badge">Cloud / DevOps &amp; Future Builds</div>
+                        </div>
+
+                        <div class="project-details">
+                            <div class="project-meta">
+                                <span class="project-id">PROJECT_03</span>
+                                <span class="project-status planned">IN ARCHITECTURE</span>
+                            </div>
+
+                            <h3 class="project-name">Cloud Infrastructure &amp; Microservices</h3>
+                            <p class="project-brief">
+                                Upcoming academic and hackathon build exploring containerized microservices, automated
+                                CI/CD pipelines, and AWS cloud deployments.
+                            </p>
+
+                            <div class="project-feature-highlight">
+                                <strong>Next Focus Area:</strong>
+                                <p>Deploying containerized Linux applications with Docker, implementing automated GitHub
+                                    Actions CI/CD workflows, and hosting on AWS cloud instances.</p>
+                            </div>
+
+                            <div class="project-key-features">
+                                <span class="feat-tag">Docker Containerization</span>
+                                <span class="feat-tag">Linux System Scripting</span>
+                                <span class="feat-tag">AWS EC2 &amp; S3 Basics</span>
+                                <span class="feat-tag">CI/CD Pipeline</span>
+                            </div>
+
+                            <div class="project-tech-stack" aria-label="Technologies to be used">
+                                <span>Docker</span>
+                                <span>Linux</span>
+                                <span>AWS</span>
+                                <span>Git CI/CD</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="#contact" class="proj-btn proj-btn-outline"
+                                    title="Connect to collaborate on this project">
+                                    <span>Collaborate / Suggest Idea</span>
+                                    <span class="external-arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project 1 Modal: StudyMate Deep Dive -->
+        <div id="modal-studymate" class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="sm-modal-title"
+            hidden>
+            <div class="modal-backdrop" data-close-modal></div>
+            <div class="modal-content">
+                <button type="button" class="modal-close-btn" data-close-modal
+                    aria-label="Close StudyMate details">&times;</button>
+                <div class="modal-header">
+                    <span class="pill-code">PROJECT_01 // ARCHITECTURE</span>
+                    <h3 id="sm-modal-title" class="modal-title">StudyMate — Deep Dive</h3>
+                    <p class="modal-subtitle">Student productivity platform with intelligent timetable and task
+                        rescheduling</p>
+                </div>
+                <div class="modal-body">
+                    <h4>Problem Statement</h4>
+                    <p>Undergraduate engineering schedules can become chaotic with varying lab periods, sudden lecture
+                        changes, and tight submission windows. Traditional generic planners fail when a student misses a
+                        dedicated slot, leading to abandonment.</p>
+
+                    <h4>Technical Architecture</h4>
+                    <ul>
+                        <li><strong>Local-First Philosophy:</strong> Zero external latency. Tasks and subjects are
+                            persisted in the browser's localStorage, allowing full offline operability.</li>
+                        <li><strong>Rescheduling Engine:</strong> An algorithmic routine that identifies missed tasks
+                            and inserts them into the next available gap in the weekly calendar.</li>
+                        <li><strong>Exam Countdown Component:</strong> Real-time millisecond countdown calculation
+                            updating the DOM efficiently.</li>
+                        <li><strong>Data Portability:</strong> Native JSON export and import options so students never
+                            lose their study configurations.</li>
+                    </ul>
+
+                    <h4>Repository &amp; Status</h4>
+                    <p>Developed as a core academic project. Source code available on GitHub profile: <a
+                            href="https://github.com/Nishanthv4" target="_blank" rel="noopener noreferrer"
+                            class="link-inline">github.com/Nishanthv4</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 Modal: AI News Detector Deep Dive -->
+        <div id="modal-ainews" class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ai-modal-title"
+            hidden>
+            <div class="modal-backdrop" data-close-modal></div>
+            <div class="modal-content">
+                <button type="button" class="modal-close-btn" data-close-modal
+                    aria-label="Close AI News Detector details">&times;</button>
+                <div class="modal-header">
+                    <span class="pill-code">PROJECT_02 // ARCHITECTURE</span>
+                    <h3 id="ai-modal-title" class="modal-title">AI News Detector — Deep Dive</h3>
+                    <p class="modal-subtitle">AI-assisted content credibility evaluation and context analysis</p>
+                </div>
+                <div class="modal-body">
+                    <h4>Problem Statement</h4>
+                    <p>Online headlines are frequently amplified for rage-clicks or commercial ad impressions. Rather
+                        than attempting to serve as an infallible arbiter of truth, this tool equips users with
+                        objective contextual signals to evaluate claims themselves.</p>
+
+                    <h4>System Design &amp; Ethical Constraints</h4>
+                    <ul>
+                        <li><strong>Ethical Boundary:</strong> Explicitly designed NOT to output binary "True or False"
+                            decrees. Credibility is nuanced, multi-faceted, and relies on transparent source
+                            attribution.</li>
+                        <li><strong>Heuristic Signals:</strong> Scans for sensationalism markers, emotional sentiment
+                            skew, anonymous assertions, and missing publication citations.</li>
+                        <li><strong>Gemini API Integration Concept:</strong> Leverages large language model context
+                            extraction to summarize counter-evidence and provide non-partisan context.</li>
+                        <li><strong>User Interface:</strong> Built with semantic HTML and clean CSS modules for
+                            lightning-fast parsing on desktop and mobile browsers.</li>
+                    </ul>
+
+                    <h4>Repository &amp; Status</h4>
+                    <p>Source code and research notes available on GitHub: <a href="https://github.com/Nishanthv4"
+                            target="_blank" rel="noopener noreferrer" class="link-inline">github.com/Nishanthv4</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================================= -->
+        <!-- SECTION 4: TECHNICAL & SOFT SKILLS                                      -->
+        <!-- ======================================================================= -->
+        <section class="section skills-section" id="skills" aria-label="Skills Dashboard">
+            <div class="section-container">
+
+                <div class="section-header reveal">
+                    <span class="section-number">03 / CAPABILITIES</span>
+                    <h2 class="section-title">Technical &amp; Soft <em>Skills</em></h2>
+                    <p class="section-subtitle">
+                        Categorized skills dashboard organized by practical proficiency stages.
+                        No arbitrary percentages or fake ratings — only genuine competence and active learning areas.
+                    </p>
+                </div>
+
+                <!-- Proficiency Stage Legend -->
+                <div class="skills-legend reveal" aria-label="Proficiency classification legend">
+                    <div class="legend-item">
+                        <span class="legend-badge badge-solid"></span>
+                        <span><strong>Confidently Demonstrating</strong> — Strong fundamental understanding &amp;
+                            problem-solving practice</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-badge badge-practiced"></span>
+                        <span><strong>Practiced Through Projects</strong> — Applied in hands-on codebases &amp; real
+                            builds</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-badge badge-learning"></span>
+                        <span><strong>Currently Learning &amp; Exploring</strong> — Actively studying documentation
+                            &amp; environments</span>
+                    </div>
+                </div>
+
+                <!-- Technical Skills Dashboard Grids -->
+                <div class="skills-categories-grid">
+
+                    <!-- Category 1: PROGRAMMING -->
+                    <div class="skills-category-card card-panel reveal">
+                        <div class="cat-header">
+                            <div class="cat-icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="cat-title">Programming Languages</h3>
+                                <span class="cat-sub">Core computational foundations</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-item-list">
+
+                            <!-- C -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">C</span>
+                                        <span class="status-pill status-solid">Demonstrated</span>
+                                    </div>
+                                    <p class="skill-context">Data types, pointers, memory models, structures, standard
+                                        I/O, core algorithmic logic.</p>
+                                </div>
+                            </div>
+
+                            <!-- C++ -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">C++</span>
+                                        <span class="status-pill status-solid">Demonstrated</span>
+                                    </div>
+                                    <p class="skill-context">Object-oriented paradigms, classes, standard template
+                                        library (STL), algorithmic problem solving.</p>
+                                </div>
+                            </div>
+
+                            <!-- Python -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">Python</span>
+                                        <span class="status-pill status-practiced">Practiced in Projects</span>
+                                    </div>
+                                    <p class="skill-context">Scripting, file operations, API requests, data
+                                        manipulation, algorithm prototyping.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category 2: WEB DEVELOPMENT -->
+                    <div class="skills-category-card card-panel reveal">
+                        <div class="cat-header">
+                            <div class="cat-icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="cat-title">Web Development</h3>
+                                <span class="cat-sub">Client interfaces &amp; interactions</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-item-list">
+
+                            <!-- HTML -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">HTML5</span>
+                                        <span class="status-pill status-solid">Demonstrated</span>
+                                    </div>
+                                    <p class="skill-context">Semantic document architecture, forms, accessible ARIA
+                                        roles, modern SEO metadata.</p>
+                                </div>
+                            </div>
+
+                            <!-- CSS -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">CSS3</span>
+                                        <span class="status-pill status-solid">Demonstrated</span>
+                                    </div>
+                                    <p class="skill-context">CSS Grid, Flexbox, custom variables, responsive media
+                                        queries, smooth animations.</p>
+                                </div>
+                            </div>
+
+                            <!-- JavaScript -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">JavaScript (ES6+)</span>
+                                        <span class="status-pill status-practiced">Practiced in Projects</span>
+                                    </div>
+                                    <p class="skill-context">DOM events, asynchronous fetch/JSON, localStorage state
+                                        persistence, modular logic.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category 3: DEVELOPER TOOLS -->
+                    <div class="skills-category-card card-panel reveal">
+                        <div class="cat-header">
+                            <div class="cat-icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="cat-title">Developer Tools</h3>
+                                <span class="cat-sub">Productivity &amp; code management</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-item-list">
+
+                            <!-- Git -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">Git</span>
+                                        <span class="status-pill status-practiced">Practiced in Projects</span>
+                                    </div>
+                                    <p class="skill-context">Version tracking, commits, branches, merge operations,
+                                        commit hygiene.</p>
+                                </div>
+                            </div>
+
+                            <!-- GitHub -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">GitHub</span>
+                                        <span class="status-pill status-practiced">Practiced in Projects</span>
+                                    </div>
+                                    <p class="skill-context">Remote repository hosting, GitHub Pages deployment, issue
+                                        tracking, markdown documentation.</p>
+                                </div>
+                            </div>
+
+                            <!-- VS Code -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">VS Code</span>
+                                        <span class="status-pill status-solid">Demonstrated</span>
+                                    </div>
+                                    <p class="skill-context">Integrated debugging, extensions, multi-root workspace
+                                        management, terminal integration.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category 4: CLOUD & DEVOPS -->
+                    <div class="skills-category-card card-panel reveal">
+                        <div class="cat-header">
+                            <div class="cat-icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="cat-title">Cloud &amp; DevOps</h3>
+                                <span class="cat-sub">Systems &amp; infrastructure focus</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-item-list">
+
+                            <!-- Linux -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">Linux</span>
+                                        <span class="status-pill status-learning">Learning / Exploring</span>
+                                    </div>
+                                    <p class="skill-context">Bash commands, filesystem hierarchy, user permissions,
+                                        package management, process control.</p>
+                                </div>
+                            </div>
+
+                            <!-- Docker -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">Docker</span>
+                                        <span class="status-pill status-learning">Learning / Exploring</span>
+                                    </div>
+                                    <p class="skill-context">Container basics, Dockerfiles, images, containers vs VMs,
+                                        isolated runtime environments.</p>
+                                </div>
+                            </div>
+
+                            <!-- AWS -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <div class="skill-name-row">
+                                        <span class="skill-tech-name">AWS</span>
+                                        <span class="status-pill status-learning">Learning / Exploring</span>
+                                    </div>
+                                    <p class="skill-context">Cloud computing paradigms (IaaS, PaaS), foundational
+                                        exploration of EC2 compute and S3 storage.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SOFT SKILLS: Personal Strengths & Active Development Areas -->
+                <div class="soft-skills-block reveal">
+                    <div class="subsection-header">
+                        <span class="pill-code">// COLLABORATION &amp; MINDSET</span>
+                        <h3 class="subsection-title">Soft Skills &amp; Personal Strengths</h3>
+                        <p class="subsection-desc">
+                            Essential professional attributes cultivated through academic coursework, peer
+                            problem-solving, and independent study.
+                        </p>
+                    </div>
+
+                    <div class="soft-skills-grid">
+
+                        <div class="soft-card">
+                            <div class="soft-num">01</div>
+                            <h4 class="soft-title">Problem Solving</h4>
+                            <p class="soft-desc">Deconstructing complex software problems into structured, verifiable
+                                sub-tasks before writing code.</p>
+                        </div>
+
+                        <div class="soft-card">
+                            <div class="soft-num">02</div>
+                            <h4 class="soft-title">Communication</h4>
+                            <p class="soft-desc">Explaining technical logic clearly, writing clean project
+                                documentation, and asking precise questions.</p>
+                        </div>
+
+                        <div class="soft-card">
+                            <div class="soft-num">03</div>
+                            <h4 class="soft-title">Team Collaboration</h4>
+                            <p class="soft-desc">Cooperating in student engineering teams, participating in code
+                                reviews, and respecting diverse approaches.</p>
+                        </div>
+
+                        <div class="soft-card">
+                            <div class="soft-num">04</div>
+                            <h4 class="soft-title">Adaptability</h4>
+                            <p class="soft-desc">Quickly getting comfortable with new command-line utilities, software
+                                tools, and evolving technologies.</p>
+                        </div>
+
+                        <div class="soft-card">
+                            <div class="soft-num">05</div>
+                            <h4 class="soft-title">Time Management</h4>
+                            <p class="soft-desc">Balancing rigorous engineering college coursework and practical
+                                self-directed project development.</p>
+                        </div>
+
+                        <div class="soft-card">
+                            <div class="soft-num">06</div>
+                            <h4 class="soft-title">Continuous Learning</h4>
+                            <p class="soft-desc">Proactively exploring technical documentation, textbooks, and developer
+                                tutorials to bridge knowledge gaps.</p>
+                        </div>
+
+                        <div class="soft-card">
+                            <div class="soft-num">07</div>
+                            <h4 class="soft-title">Critical Thinking</h4>
+                            <p class="soft-desc">Analyzing algorithmic trade-offs, edge cases, and maintainability
+                                rather than accepting surface-level fixes.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================= -->
+        <!-- SECTION 5: CERTIFICATIONS & ACHIEVEMENTS                                -->
+        <!-- ======================================================================= -->
+        <section class="section certs-section" id="certifications" aria-label="Certifications & Achievements">
+            <div class="section-container">
+
+                <div class="section-header reveal">
+                    <span class="section-number">04 / CREDENTIALS</span>
+                    <h2 class="section-title">Certifications &amp; <em>Achievements</em></h2>
+                    <p class="section-subtitle">
+                        Verified technical credentials, online course completions, and academic recognitions.
+                    </p>
+                </div>
+
+                <!-- Certifications Content -->
+                <div class="certs-container" id="certsContainer">
+
+                    <!-- First-Year Academic Notice -->
+                    <div class="cert-status-notice card-panel reveal">
+                        <div class="notice-badge">
+                            <span class="status-pulse" aria-hidden="true"></span>
+                            <span>CURRENT ACADEMIC STANDING: FIRST YEAR</span>
+                        </div>
+                        <h3 class="notice-heading">Foundational Credentials Underway</h3>
+                        <p class="notice-text">
+                            As a first-year Computer Science and Engineering undergraduate at R.M.D. Engineering
+                            College,
+                            I am actively preparing for foundational certifications in <strong>Cloud Computing (AWS
+                                Certified Cloud Practitioner track)</strong>
+                            and advanced programming. Verified certificates and competition credentials will be showcased
+                            here upon completion.
+                        </p>
+                    </div>
+
+                    <!-- 
+                    ========================================================================
+                    CERTIFICATION TEMPLATE CARDS (Uncomment & customize when credentials earned)
+                    ========================================================================
+
+                    <div class="cert-category-tabs reveal" role="tablist" aria-label="Certification categories">
+                        <button type="button" class="cert-tab-btn active" data-cert-cat="all">All Credentials</button>
+                        <button type="button" class="cert-tab-btn" data-cert-cat="tech">Technical Certifications</button>
+                        <button type="button" class="cert-tab-btn" data-cert-cat="courses">Online Courses</button>
+                        <button type="button" class="cert-tab-btn" data-cert-cat="academic">Academic Honors</button>
+                        <button type="button" class="cert-tab-btn" data-cert-cat="hackathons">Hackathons &amp; Contests</button>
+                    </div>
+
+                    <div class="certs-grid">
+                        <div class="cert-card cert-card-template reveal" data-cert-group="tech">
+                            <div class="cert-type-pill">Technical Certification</div>
+                            <h4 class="cert-name">[Target: Cloud / Programming Certification]</h4>
+                            <div class="cert-org">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                                <span>Issuing Organization: [e.g. AWS / Cisco / Oracle]</span>
+                            </div>
+                            <div class="cert-meta-row">
+                                <span>Issue Date: [Month, Year]</span>
+                                <span>ID: [Credential ID Placeholder]</span>
+                            </div>
+                            <div class="cert-actions">
+                                <span class="cert-action-disabled">[Verification Link Placeholder]</span>
+                            </div>
+                        </div>
+
+                        <div class="cert-card cert-card-template reveal" data-cert-group="courses">
+                            <div class="cert-type-pill">Online Course</div>
+                            <h4 class="cert-name">[Target: Data Structures / Web Development Course]</h4>
+                            <div class="cert-org">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                                <span>Platform: [e.g. Coursera / edX / NPTEL]</span>
+                            </div>
+                            <div class="cert-meta-row">
+                                <span>Completion: [In Progress]</span>
+                                <span>Focus: Algorithms &amp; Software</span>
+                            </div>
+                            <div class="cert-actions">
+                                <span class="cert-action-disabled">[Course Verification Link]</span>
+                            </div>
+                        </div>
+
+                        <div class="cert-card cert-card-template reveal" data-cert-group="hackathons">
+                            <div class="cert-type-pill">Hackathon &amp; Competitions</div>
+                            <h4 class="cert-name">[Target: Collegiate Hackathons &amp; Coding Contests]</h4>
+                            <div class="cert-org">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <span>Event: [Upcoming College / National Hackathons]</span>
+                            </div>
+                            <div class="cert-meta-row">
+                                <span>Role: Developer / Participant</span>
+                                <span>Status: Preparing Projects</span>
+                            </div>
+                            <div class="cert-actions">
+                                <span class="cert-action-disabled">[Event Details &amp; Certificate]</span>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================= -->
+        <!-- SECTION 6: INTERNSHIPS & EXTRACURRICULAR EXPERIENCE                     -->
+        <!-- ======================================================================= -->
+        <section class="section experience-section" id="experience" aria-label="Experience & Extracurriculars">
+            <div class="section-container">
+
+                <div class="section-header reveal">
+                    <span class="section-number">05 / TIMELINE</span>
+                    <h2 class="section-title">Experience &amp; <em>Activities</em></h2>
+                    <p class="section-subtitle">
+                        Academic engagement, collegiate technical events, and professional development activities at
+                        R.M.D. Engineering College.
+                    </p>
+                </div>
+
+                <div class="experience-layout">
+
+                    <!-- Experience Stream 1: ACADEMIC EXPERIENCE -->
+                    <div class="exp-column reveal">
+                        <div class="column-header">
+                            <div class="col-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                </svg>
+                            </div>
+                            <h3 class="col-title">Academic Experience</h3>
+                        </div>
+
+                        <div class="timeline-stream">
+
+                            <!-- Academic item 1 -->
+                            <div class="stream-item">
+                                <div class="stream-badge">2026 — PRESENT</div>
+                                <h4 class="stream-title">B.Tech Computer Science &amp; Engineering</h4>
+                                <div class="stream-institution">R.M.D. Engineering College, Tamil Nadu</div>
+                                <p class="stream-desc">
+                                    Actively studying foundational computer science coursework, including programming
+                                    methodology,
+                                    computational logic, engineering mathematics, and laboratory practicals.
+                                </p>
+                                <div class="stream-tags">
+                                    <span>CSE Curriculum</span>
+                                    <span>C / C++ Labs</span>
+                                    <span>Algorithms</span>
+                                </div>
+                            </div>
+
+                            <!-- Academic item 2: Technical Workshops & Seminars Placeholder -->
+                            <div class="stream-item">
+                                <div class="stream-badge">ONGOING</div>
+                                <h4 class="stream-title">College Technical Workshops &amp; Seminars</h4>
+                                <div class="stream-institution">Department of CSE · Academic Seminars</div>
+                                <p class="stream-desc">
+                                    Participating in departmental guest lectures, technical demonstrations, and
+                                    workshops on modern computing developments.
+                                </p>
+                                <div class="stream-tags">
+                                    <span>Workshops</span>
+                                    <span>Technical Seminars</span>
+                                    <span>Peer Labs</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Experience Stream 2: INTERNSHIP & EXTRACURRICULAR (Authentic Placeholders) -->
+                    <div class="exp-column reveal">
+                        <div class="column-header">
+                            <div class="col-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                            <h3 class="col-title">Internships &amp; Extracurriculars</h3>
+                        </div>
+
+                        <div class="timeline-stream">
+
+                            <!-- Internship Placeholder -->
+                            <div class="stream-item stream-placeholder">
+                                <div class="stream-badge badge-planned">SEEKING INTERNSHIP</div>
+                                <h4 class="stream-title">Software / Cloud Engineering Internship</h4>
+                                <div class="stream-institution">Open to Summer / Winter Opportunities</div>
+                                <p class="stream-desc">
+                                    First-year undergraduate actively preparing for software development and cloud
+                                    engineering internships.
+                                    Ready to contribute solid C/C++, Python, and web fundamentals while gaining
+                                    real-world industry experience.
+                                </p>
+                                <div class="stream-tags">
+                                    <span>Internship Target</span>
+                                    <span>Cloud Engineering</span>
+                                    <span>Software Dev</span>
+                                </div>
+                            </div>
+
+                            <!-- Extracurricular Activities -->
+                            <div class="stream-item">
+                                <div class="stream-badge">STUDENT LIFE</div>
+                                <h4 class="stream-title">Technical Clubs &amp; Collaborative Projects</h4>
+                                <div class="stream-institution">Campus Community &amp; Developer Groups</div>
+                                <p class="stream-desc">
+                                    Engaging with campus coding clubs, study circles, and peer teams to build
+                                    collaborative projects and prepare for upcoming hackathons.
+                                </p>
+                                <div class="stream-tags">
+                                    <span>Student Clubs</span>
+                                    <span>Peer Study</span>
+                                    <span>Hackathon Prep</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================= -->
+        <!-- SECTION 7: RESUME & CONTACT DETAILS                                     -->
+        <!-- ======================================================================= -->
+        <section class="section contact-section" id="contact" aria-label="Resume and Contact Information">
+            <div class="section-container">
+
+                <div class="section-header reveal">
+                    <span class="section-number">06 / GET IN TOUCH</span>
+                    <h2 class="section-title">Resume &amp; <em>Contact</em></h2>
+                    <p class="section-subtitle">
+                        Inspect my developer credentials, download my resume, or send a direct inquiry regarding
+                        projects and opportunities.
+                    </p>
+                </div>
+
+                <div class="contact-resume-wrapper">
+
+                    <!-- Resume Showcase Card -->
+                    <div class="resume-card card-panel reveal">
+                        <div class="resume-header">
+                            <div class="resume-title-group">
+                                <div class="pill-code">// CURRICULUM VITAE</div>
+                                <h3 class="resume-heading">Nishanth V — Developer Resume</h3>
+                                <span class="resume-date">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" aria-hidden="true">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>Last Updated: October 2026</span>
+                                </span>
+                            </div>
+                            <div class="resume-badge-status">READY FOR REVIEW</div>
+                        </div>
+
+                        <!-- Resume In-page Preview Snippet -->
+                        <div class="resume-preview-box">
+                            <div class="resume-preview-header">
+                                <strong>NISHANTH V</strong>
+                                <span>B.Tech CSE · R.M.D. Engineering College</span>
+                            </div>
+                            <p class="resume-preview-text">
+                                <strong>Core Focus:</strong> Cloud Engineering, Software Development, Linux, Docker,
+                                AWS.<br>
+                                <strong>Languages:</strong> C, C++, Python, JavaScript, HTML, CSS.<br>
+                                <strong>Projects:</strong> StudyMate (Student Study Planner), AI News Detector
+                                (Credibility Analysis).<br>
+                                <strong>Objective:</strong> Master CS fundamentals and secure competitive software/cloud
+                                engineering internships.
+                            </p>
+                        </div>
+
+                        <div class="resume-actions">
+                            <a href="assets/resume.pdf" download="Nishanth_V_Resume.pdf" class="btn btn-primary"
+                                title="Download official PDF resume">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                <span>Download Resume (PDF)</span>
+                            </a>
+                            <button type="button" class="btn btn-outline" id="btnPreviewResume">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <span>Full Quick Preview</span>
+                            </button>
+                        </div>
+
+                        <!-- Note for Nishanth: To update your resume, simply place your newly exported PDF file at assets/resume.pdf -->
+                    </div>
+
+                    <!-- Contact Details & Direct Form -->
+                    <div class="contact-interactive-grid">
+
+                        <!-- Direct Contact Info Cards -->
+                        <div class="contact-info-panel card-panel reveal">
+                            <div class="pill-code">// DIRECT COORDINATES</div>
+                            <h3 class="contact-panel-title">Let's Connect</h3>
+                            <p class="contact-lead-text">
+                                I am always excited to discuss software engineering, cloud computing architectures,
+                                academic collaborations,
+                                and genuine internship opportunities.
+                            </p>
+
+                            <div class="contact-channels">
+
+                                <!-- Email Channel with Copy Button -->
+                                <div class="channel-card">
+                                    <div class="channel-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" aria-hidden="true">
+                                            <path
+                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                            </path>
+                                            <polyline points="22,6 12,13 2,6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="channel-body">
+                                        <span class="channel-label">Professional Email</span>
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nishanthv4@gmail.com" target="_blank" rel="noopener noreferrer" class="channel-value"
+                                            id="emailLink">nishanthv4@gmail.com ↗</a>
+                                    </div>
+                                    <button type="button" class="btn-copy" id="btnCopyEmail"
+                                        title="Copy email address to clipboard" aria-label="Copy email address">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                        <span class="copy-tooltip" id="copyTooltip">Copy</span>
+                                    </button>
+                                </div>
+
+                                <!-- GitHub Channel -->
+                                <div class="channel-card">
+                                    <div class="channel-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                                        </svg>
+                                    </div>
+                                    <div class="channel-body">
+                                        <span class="channel-label">GitHub Repository Profile</span>
+                                        <a href="https://github.com/Nishanthv4" target="_blank"
+                                            rel="noopener noreferrer" class="channel-value">github.com/Nishanthv4 ↗</a>
+                                    </div>
+                                </div>
+
+                                <!-- LinkedIn Channel -->
+                                <div class="channel-card">
+                                    <div class="channel-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </div>
+                                    <div class="channel-body">
+                                        <span class="channel-label">LinkedIn Profile</span>
+                                        <a href="https://www.linkedin.com/in/nishanth-v-129367360/" target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="channel-value">linkedin.com/in/nishanth-v-129367360 ↗</a>
+                                    </div>
+                                </div>
+
+                                <!-- X / Twitter Channel -->
+                                <div class="channel-card">
+                                    <div class="channel-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                        </svg>
+                                    </div>
+                                    <div class="channel-body">
+                                        <span class="channel-label">X / Twitter</span>
+                                        <a href="https://x.com/nishant61972303" target="_blank"
+                                            rel="noopener noreferrer" class="channel-value">x.com/nishant61972303 ↗</a>
+                                    </div>
+                                </div>
+
+                                <!-- Location Channel -->
+                                <div class="channel-card">
+                                    <div class="channel-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                    </div>
+                                    <div class="channel-body">
+                                        <span class="channel-label">Location</span>
+                                        <span class="channel-value">Tamil Nadu, India</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Client-Validated Direct Message Form (with honest fallback) -->
+                        <div class="contact-form-panel card-panel reveal">
+                            <div class="pill-code">// SEND A MESSAGE</div>
+                            <h3 class="contact-panel-title">Direct Inquiries</h3>
+                            <p class="contact-lead-text">
+                                Fill in your message below. This form validates your input and instantly opens your
+                                default email client with a pre-formatted draft to Nishanth V.
+                            </p>
+
+                            <form id="contactForm" class="contact-form" novalidate>
+
+                                <div class="form-group">
+                                    <label for="senderName" class="form-label">Your Name <span
+                                            class="req">*</span></label>
+                                    <input type="text" id="senderName" name="name" class="form-input"
+                                        placeholder="e.g. Alex Morgan" required autocomplete="name">
+                                    <span class="form-error" id="nameError" role="alert">Please enter your name.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="senderEmail" class="form-label">Your Email <span
+                                            class="req">*</span></label>
+                                    <input type="email" id="senderEmail" name="email" class="form-input"
+                                        placeholder="e.g. alex@example.com" required autocomplete="email">
+                                    <span class="form-error" id="emailError" role="alert">Please enter a valid email
+                                        address.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="messageSubject" class="form-label">Subject <span
+                                            class="req">*</span></label>
+                                    <input type="text" id="messageSubject" name="subject" class="form-input"
+                                        placeholder="e.g. Technical Discussion / Internship Inquiry" required>
+                                    <span class="form-error" id="subjectError" role="alert">Please enter a
+                                        subject.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="messageBody" class="form-label">Message <span
+                                            class="req">*</span></label>
+                                    <textarea id="messageBody" name="message" class="form-textarea" rows="4"
+                                        placeholder="Write your message here..." required></textarea>
+                                    <span class="form-error" id="messageError" role="alert">Please write a
+                                        message.</span>
+                                </div>
+
+                                <!-- Form Notice & Feedback Status -->
+                                <div id="formStatus" class="form-status-banner" role="status" aria-live="polite"></div>
+
+                                <button type="submit" class="btn btn-primary btn-submit" id="btnSubmitForm">
+                                    <span>Send Message via Gmail</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </button>
+
+                                <p class="form-honest-disclaimer">
+                                    No hidden backend or third-party tracking. If preferred, compose directly in Gmail:
+                                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nishanthv4@gmail.com" target="_blank" rel="noopener noreferrer" class="link-inline">nishanthv4@gmail.com ↗</a>.
+                                </p>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Resume Quick Preview Modal -->
+        <div id="modalResume" class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title"
+            hidden>
+            <div class="modal-backdrop" data-close-modal></div>
+            <div class="modal-content modal-content-lg">
+                <button type="button" class="modal-close-btn" data-close-modal
+                    aria-label="Close resume preview">&times;</button>
+                <div class="modal-header">
+                    <span class="pill-code">RESUME // QUICK PREVIEW</span>
+                    <h3 id="resume-modal-title" class="modal-title">Nishanth V — Curriculum Vitae</h3>
+                    <p class="modal-subtitle">Computer Science &amp; Engineering Undergraduate | Aspiring Cloud Engineer
+                    </p>
+                </div>
+                <div class="modal-body resume-modal-body">
+                    <div class="resume-sheet">
+                        <div class="resume-sheet-header">
+                            <h2>NISHANTH V</h2>
+                            <p>Tamil Nadu, India · <a href="https://github.com/Nishanthv4" target="_blank"
+                                    rel="noopener noreferrer">github.com/Nishanthv4</a> · B.Tech Computer Science &amp;
+                                Engineering</p>
+                        </div>
+
+                        <div class="resume-sheet-section">
+                            <h3>CAREER OBJECTIVE</h3>
+                            <p>Develop strong computer science fundamentals, build practical software projects, gain
+                                internship experience, and prepare for a career in Cloud Engineering.</p>
+                        </div>
+
+                        <div class="resume-sheet-section">
+                            <h3>EDUCATION</h3>
+                            <p><strong>B.Tech in Computer Science and Engineering — First Year</strong><br>
+                                R.M.D. Engineering College, Tamil Nadu, India</p>
+                        </div>
+
+                        <div class="resume-sheet-section">
+                            <h3>TECHNICAL SKILLS</h3>
+                            <ul>
+                                <li><strong>Programming Languages:</strong> C, C++, Python</li>
+                                <li><strong>Web Development:</strong> HTML5, CSS3, JavaScript</li>
+                                <li><strong>Developer Tools:</strong> Git, GitHub, VS Code</li>
+                                <li><strong>Cloud &amp; DevOps (Active Study):</strong> Linux, Docker, AWS</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-sheet-section">
+                            <h3>PROJECTS</h3>
+                            <p><strong>1. StudyMate — Student Study Planner</strong> (HTML, CSS, JavaScript,
+                                LocalStorage API)<br>
+                                A student study planner designed to organize academic tasks, subjects, schedules, and
+                                deadlines with smart missed-task rescheduling.</p>
+
+                            <p><strong>2. AI News Detector — Credibility Analysis</strong> (JavaScript, Gemini API
+                                Concept, HTML/CSS)<br>
+                                An AI-assisted website designed to evaluate news context, heuristic signals, and
+                                linguistic indicators without making false claims of absolute verification.</p>
+                        </div>
+
+                        <div class="resume-sheet-section">
+                            <h3>SOFT SKILLS &amp; STRENGTHS</h3>
+                            <p>Problem Solving, Communication, Team Collaboration, Adaptability, Time Management,
+                                Continuous Learning, Critical Thinking.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="assets/resume.pdf" download="Nishanth_V_Resume.pdf" class="btn btn-primary">
+                        <span>Download Official PDF</span>
+                    </a>
+                    <button type="button" class="btn btn-outline" data-close-modal>Close</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- FOOTER                                                                    -->
+    <!-- ========================================================================= -->
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-brand-col">
+                <a class="brand" href="#home" aria-label="Back to home">
+                    <span class="brand-badge">N</span>
+                    <span class="brand-name">nishanth<span class="brand-accent">.dev</span></span>
+                </a>
+                <p class="footer-tagline">
+                    Engineered with clean code, semantic standards, and genuine curiosity.
+                </p>
+            </div>
+
+            <div class="footer-nav-col">
+                <div class="footer-nav-title">Quick Navigation</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-status-col">
+                <div class="footer-nav-title">System Status</div>
+                <div class="system-status-indicator">
+                    <span class="status-pulse-green"></span>
+                    <span>GitHub Pages: Deployed &amp; Active</span>
+                </div>
+                <p class="footer-copy">
+                    &copy; <span id="currentYear">2026</span> Nishanth V. All rights reserved.<br>
+                    Hosted at <a href="https://nishanthv4.github.io/Portfolio/"
+                        class="link-inline">nishanthv4.github.io/Portfolio/</a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Back to Top Floating Button -->
+    <button id="backToTop" class="back-to-top-btn" aria-label="Back to top of page" title="Scroll to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- ========================================================================= -->
+    <!-- AI PORTFOLIO ASSISTANT (LOCAL WEBGPU CHATBOT)                            -->
+    <!-- ========================================================================= -->
+
+    <!-- Floating AI Assistant Launcher -->
+    <button id="aiChatToggle" class="ai-chat-toggle-btn" aria-label="Open AI Portfolio Assistant"
+        title="Chat with Nishanth's Local AI Assistant" aria-expanded="false">
+        <span class="ai-sparkle-icon" aria-hidden="true">✦</span>
+        <span class="ai-toggle-label">AI Assistant</span>
+        <span class="ai-toggle-pulse" aria-hidden="true"></span>
+    </button>
+
+    <!-- AI Portfolio Assistant Chat Panel -->
+    <aside id="aiChatPanel" class="ai-chat-panel" aria-label="AI Portfolio Assistant" aria-hidden="true">
+        <div class="ai-chat-inner">
+
+            <!-- Panel Header -->
+            <div class="ai-chat-header">
+                <div class="ai-header-left">
+                    <div class="ai-avatar-badge" aria-hidden="true">
+                        <span>NV</span>
+                        <span id="aiStatusDot" class="ai-status-dot dot-unloaded"></span>
+                    </div>
+                    <div class="ai-header-titles">
+                        <h3 class="ai-header-title">Portfolio Assistant</h3>
+                        <span id="aiStatusText" class="ai-header-subtitle">Local WebGPU · 100% Private</span>
+                    </div>
+                </div>
+
+                <div class="ai-header-actions">
+                    <button type="button" id="aiChatClear" class="ai-header-btn" title="Clear conversation"
+                        aria-label="Clear conversation">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                            </path>
+                        </svg>
+                    </button>
+                    <button type="button" id="aiChatClose" class="ai-header-btn" title="Close assistant"
+                        aria-label="Close assistant">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Welcome & Model Initialization Banner -->
+            <div id="aiWelcomeBanner" class="ai-welcome-card">
+                <div class="ai-welcome-pill">✦ LOCAL BROWSER INFERENCE</div>
+                <h4 class="ai-welcome-heading">Client-Side AI Assistant</h4>
+                <p class="ai-welcome-desc">
+                    Powered by <strong>Qwen2.5-0.5B-Instruct</strong> running entirely in your browser via <strong>WebGPU</strong>.
+                    Zero external APIs, zero server processing, and zero tracking.
+                </p>
+
+                <!-- Progress bar during download -->
+                <div id="aiProgressWrapper" class="ai-progress-wrapper hidden">
+                    <div class="ai-progress-track">
+                        <div id="aiProgressBar" class="ai-progress-bar"></div>
+                    </div>
+                    <span id="aiProgressText" class="ai-progress-status">Downloading model weights...</span>
+                </div>
+
+                <!-- Error Card (if WebGPU unsupported or failed) -->
+                <div id="aiErrorCard" class="ai-error-card hidden" role="alert">
+                    <div class="ai-error-title">⚠️ WebGPU Status</div>
+                    <p id="aiErrorMsg" class="ai-error-detail"></p>
+                    <div class="ai-error-actions">
+                        <button type="button" id="aiRetryBtn" class="ai-retry-btn">Retry Initialization</button>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nishanthv4@gmail.com" target="_blank"
+                            rel="noopener noreferrer" class="ai-contact-btn">Email Nishanth Directly</a>
+                    </div>
+                </div>
+
+                <button type="button" id="aiStartBtn" class="ai-start-btn">
+                    <span class="sparkle">✦</span>
+                    <span>Start AI Assistant (~350MB one-time cache)</span>
+                </button>
+            </div>
+
+            <!-- Chat Messages Container -->
+            <div id="aiChatMessages" class="ai-messages-container" role="log" aria-live="polite"></div>
+
+            <!-- Suggested Question Chips -->
+            <div id="aiSuggestedQuestions" class="ai-suggested-container" aria-label="Suggested questions"></div>
+
+            <!-- Chat Input Area -->
+            <div class="ai-input-area">
+                <div class="ai-input-box">
+                    <textarea id="aiChatInput" class="ai-textarea" rows="1"
+                        placeholder="Ask about Nishanth's skills, projects, or background..."
+                        aria-label="Message for AI Assistant"></textarea>
+
+                    <button type="button" id="aiChatSend" class="ai-send-btn" title="Send message"
+                        aria-label="Send message">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+
+                    <button type="button" id="aiChatStop" class="ai-stop-btn hidden" title="Stop generating"
+                        aria-label="Stop generating">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                        </svg>
+                    </button>
+                </div>
+                <div class="ai-footer-note">
+                    <span>Private local WebGPU</span> · <span>Zero cloud latency</span>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- Main JavaScript Modules -->
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
