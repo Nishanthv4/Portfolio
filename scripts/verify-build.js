@@ -20,6 +20,14 @@ requireFile(path.join(distRoot, 'index.html'), 'built HTML');
 requireFile(path.join(distRoot, 'script.js'), 'portfolio interaction bundle');
 requireFile(path.join(assetsRoot, 'index.js'), 'AI assistant entry bundle');
 requireFile(path.join(assetsRoot, 'lib.js'), 'AI runtime bundle');
+requireFile(path.join(assetsRoot, 'resume.pdf'), 'published resume PDF');
+
+const resumePath = path.join(assetsRoot, 'resume.pdf');
+const resumeBytes = fs.readFileSync(resumePath);
+if (resumeBytes.subarray(0, 5).toString('ascii') !== '%PDF-' || resumeBytes.length < 4000) {
+  fail('Published resume is invalid or appears to be the old placeholder PDF');
+}
+console.log('[verify-build] OK: published resume is a valid non-placeholder PDF');
 
 const entrySource = fs.readFileSync(path.join(assetsRoot, 'index.js'), 'utf8');
 const assetFiles = fs.readdirSync(assetsRoot);
