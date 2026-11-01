@@ -1,189 +1,126 @@
-# Nishanth V — Personal Developer Portfolio & In-Browser AI Assistant
+# Nishanth V — Developer Portfolio
 
-A modern, responsive, developer-focused portfolio website for **Nishanth V**, a First-Year Computer Science and Engineering undergraduate at **R.M.D. Engineering College**, featuring a **100% private, client-side WebGPU AI Assistant** running directly inside the visitor's browser.
+A responsive personal portfolio for Nishanth V, a first-year B.Tech Computer Science and Engineering student at R.M.D. Engineering College. The site presents practical projects, skills, learning goals, contact details, and an optional local-inference AI assistant.
 
-🌐 **Live Website**: [https://nishanthv4.github.io/Portfolio/](https://nishanthv4.github.io/Portfolio/)  
-🚀 **Alternative Deployment**: Ready for immediate one-click deployment on **Vercel**
+**Live portfolio:** https://nishanthv4.github.io/Portfolio/  
+**Source repository:** https://github.com/Nishanthv4/Portfolio
 
----
+## Highlights
 
-## 1. Project Overview
+- Responsive portfolio built with semantic HTML, CSS, and JavaScript.
+- Interactive terminal with predefined demonstration commands.
+- Project detail dialogs and contact form that prepares a Gmail draft.
+- Local-inference AI portfolio assistant using WebLLM, WebGPU, and a dedicated Web Worker.
+- Markdown output sanitized with DOMPurify before it is inserted into the page.
+- GitHub Actions workflow that runs the test suite, builds the site, verifies generated assets, and deploys GitHub Pages.
 
-This portfolio serves as a central engineering workspace and professional identity showcase, highlighting:
-- **Core Engineering Foundations**: C, C++, Python, Data Structures, and algorithmic problem solving.
-- **Web & Mobile Applications**: StudyMate, AI News Detector, and QuizHero.
-- **Cloud & DevOps Journey**: Actively exploring Linux administration, Docker containerization, AWS cloud architecture, and CI/CD automation.
-- **Local In-Browser AI Assistant**: An interactive conversational agent answering questions about Nishanth's background, verified skills, and academic projects with **zero cloud inference latency, zero server costs, and complete visitor privacy**.
+## AI assistant architecture
 
----
+The assistant runs inference in the visitor's browser. It does not send visitor prompts to a hosted Gemini or OpenAI inference API.
 
-## 2. Key Features
+- Runtime: `@mlc-ai/web-llm`
+- Model: `SmolLM2-360M-Instruct`
+- Quantization: `q4f16_1` when the adapter supports `shader-f16`, otherwise `q4f32_1`
+- Approximate model download size reported by the application: 194 MB
+- Context window override: 2,048 tokens
+- Default response limit: 128 tokens
+- Execution: module Web Worker with WebGPU
 
-- **Interactive Developer Terminal**: Embedded interactive command line simulating real Linux commands (`cat interests.txt`, `tools --list`, `ping contact`, `clear`) with an animated typewriter sequence.
-- **In-Browser WebGPU AI Assistant**:
-  - Powered by `@mlc-ai/web-llm` running the **Qwen2.5-0.5B-Instruct** quantized model.
-  - Dedicated Web Worker execution ensures the main browser UI thread stays silky-smooth at 60 FPS.
-  - Model weights cached in browser `CacheStorage` for instant subsequent loads.
-  - Safe HTML parsing using `DOMPurify` to prevent cross-site scripting (XSS).
-  - Explicit user activation (no heavy model downloads on page load).
-  - Live streaming responses, token progress bars, stop generation, and conversation reset.
-- **Responsive & Accessible Design**:
-  - Dark-themed terminal aesthetic with custom CSS variables and high-contrast typography (`Inter` & `Fira Code`).
-  - Mobile drawer navigation with keyboard accessibility (`Escape` key modal closure, `T` shortcut for terminal).
-  - Semantic HTML5 structure with ARIA landmark attributes and `<noscript>` visibility fallbacks.
-- **Direct Gmail Web Compose**:
-  - Bypasses desktop Outlook handlers by opening Gmail web compose directly (`mail.google.com/mail/?view=cm...`) with pre-filled subject and body.
+The visitor must explicitly start the assistant. The first start downloads the model weights; later starts may reuse browser-cached data. WebGPU availability and performance vary by browser, operating system, graphics driver, and GPU memory. If WebGPU is unavailable, the assistant displays an explanatory fallback.
 
----
+The portfolio page itself loads Google Fonts from Google's font CDN. The AI model is downloaded from its configured model host, so the initial model load requires an internet connection.
 
-## 3. Technology Stack
+## Projects
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Frontend Core** | HTML5, CSS3, Modern ES6+ JavaScript (zero external UI framework dependencies for core site) |
-| **AI Inference** | `@mlc-ai/web-llm` (v0.2.87), WebGPU API, Web Workers |
-| **Model** | `Qwen2.5-0.5B-Instruct-q4f16_1-MLC` (with automatic fallback to `q4f32_1` on GPUs without FP16) |
-| **Markdown & Security** | `marked` (v18.1.2), `dompurify` (v3.4.17) |
-| **Build System & Bundler**| Vite 8, Rollup, Node.js (v20+ / v22+) |
-| **Hosting & CI/CD** | Vercel (primary), GitHub Pages, GitHub Actions |
+| Project | Description | Public source |
+|---|---|---|
+| StudyMate | Local-first student planner concept with timetable, tasks, missed-task rescheduling, exam countdown, and backup/restore | Not published yet |
+| AI News Detector | AI-assisted credibility analysis concept focused on context and source signals, not absolute true/false judgments | Not published yet |
+| QuizHero | React and TypeScript quiz application with Capacitor Android packaging | [GitHub](https://github.com/Nishanthv4/Quizhero) |
+| Cloud Infrastructure & Microservices | Planned learning project for Linux, Docker, AWS, and CI/CD | Not published yet |
 
----
+Project descriptions and skill levels are maintained in `portfolio.json`. Keep that file aligned with what is implemented and publicly demonstrable.
 
-## 4. Project Directory Structure
+## Local development
 
-```text
-Nishanth_portfolio/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml            # Automated GitHub Actions deployment workflow
-├── assets/
-│   ├── ai-news-detector.png      # AI News Detector application screenshot
-│   ├── StudyMate.png             # StudyMate planner application screenshot
-│   ├── quizhero-preview.svg      # QuizHero architectural diagram
-│   ├── avatar.svg                # Developer avatar badge
-│   ├── favicon.svg               # Browser favicon
-│   ├── resume.pdf                # Resume document placeholder
-│   ├── index.js                  # Prebundled WebGPU AI assistant controller
-│   ├── ai-worker.js              # WebLLM worker thread
-│   └── lib.js                    # Quantized WebLLM engine runtime & DOMPurify bundle
-├── public/
-│   ├── robots.txt                # Search engine crawler instructions
-│   └── sitemap.xml               # SEO XML sitemap
-├── src/
-│   ├── ai-service.js             # WebGPU detection, shared init promise & MLC engine controller
-│   ├── ai-worker.js              # Worker entry point
-│   ├── chatbot-ui.js             # UI state, DOMPurify markdown rendering & streaming
-│   ├── main.js                   # Application bootstrap
-│   └── portfolioKnowledge.js     # Compact verified facts extractor & system prompt
-├── index.html                    # Main semantic HTML document
-├── style.css                     # Custom design system & responsive styling
-├── script.js                     # Zero-dependency interactive portfolio controller
-├── portfolio.json                # Single source of truth for verified portfolio data
-├── package.json                  # Project dependencies & build scripts
-├── vercel.json                   # Vercel deployment configuration & security headers
-├── vite.config.js                # Vite build and worker bundling configuration
-└── README.md                     # Documentation
+### Requirements
+
+- Node.js 22
+- npm
+- A current browser; WebGPU is only required to run the optional local AI assistant.
+
+### Install and run
+
+```bash
+git clone https://github.com/Nishanthv4/Portfolio.git
+cd Portfolio
+npm ci
+npm run dev
 ```
 
----
+Vite serves the site at `http://localhost:3000`.
 
-## 5. Local Development & Installation
+### Test and production build
 
-### Prerequisites
-- **Node.js**: Version 20.x or 22.x+
-- **Browser**: Google Chrome 113+, Microsoft Edge 113+, or any browser with WebGPU enabled.
+```bash
+npm test
+npm run build
+npm run preview
+```
 
-### Setup Instructions
+The production build performs these steps:
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Nishanthv4/Portfolio.git
-   cd Portfolio
-   ```
+1. Bundles the assistant modules from `src/`.
+2. Preserves the generated hashed Web Worker filename so it matches the URL referenced by the assistant entry bundle.
+3. Builds the website with Vite.
+4. Copies the main portfolio controller into `dist/`.
+5. Verifies that the assistant entry point, runtime library, worker, and local assets exist in the final output.
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+The build verification fails when the worker reference cannot be resolved to a file in `dist/assets/`.
 
-3. **Start the local development server**:
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:3000` in your WebGPU-capable browser.
+## Deployment
 
-4. **Build for production**:
-   ```bash
-   npm run build
-   ```
-   Outputs the optimized, minified bundle into the `dist/` folder.
+### GitHub Pages
 
-5. **Preview the production build locally**:
-   ```bash
-   npm run preview
-   ```
+The `.github/workflows/deploy.yml` workflow runs on pushes to `main`. It installs dependencies, runs `npm test`, builds and verifies the site, then deploys the `dist/` directory.
 
----
+In repository settings, configure **Pages → Build and deployment → Source: GitHub Actions**. Do not configure Pages to publish the repository root directly.
 
-## 6. AI Portfolio Assistant: Architecture & Hardware Requirements
+### Vercel
 
-### How WebLLM Works
-Traditional AI chatbots send user prompts over the internet to remote cloud APIs (e.g., OpenAI or Gemini). This portfolio assistant uses `@mlc-ai/web-llm` to execute machine learning models **directly on your computer's GPU via WebGPU**.
+Import this repository into Vercel. Use:
 
-1. **Explicit Activation**: The model is never downloaded on page load. A visitor must explicitly click **Start AI Assistant**.
-2. **Download & Caching**: On the first launch, the browser downloads quantized model weights (~350MB). The weights are stored in browser `CacheStorage`. Subsequent visits load in under 2 seconds directly from disk without re-downloading.
-3. **Web Worker Threading**: Tensor arithmetic and inference run in an isolated Web Worker. The webpage UI remains completely responsive during token generation.
-4. **Factual Grounding**: The model is prompted with factual facts strictly extracted from `portfolio.json`. It is instructed never to invent experience, certifications, or accomplishments.
+- Framework preset: Vite
+- Build command: `npm run build`
+- Output directory: `dist`
 
-### Hardware & Browser Compatibility
-- **Supported Browsers**: Google Chrome (v113+), Microsoft Edge (v113+), Brave, Opera, Chrome on Android.
-- **Hardware**: Any modern dedicated or integrated graphics card (Intel Iris Xe, AMD Radeon, NVIDIA GeForce, Apple Silicon M1/M2/M3/M4).
-- **Fallback**: If a visitor opens the portfolio on an unsupported device or mobile browser without WebGPU, the assistant displays a clear explanation with instructions on how to enable hardware acceleration.
+The repository's `vercel.json` supplies the Vercel build and response-header configuration.
 
----
+## Repository structure
 
-## 7. Deployment Instructions
+```text
+.
+├── .github/workflows/     # CI and GitHub Pages deployment
+├── assets/                # Images, icons, generated assistant bundles, resume
+├── scripts/               # Assistant build and production verification
+├── src/                   # AI assistant source modules
+├── index.html             # Portfolio markup
+├── style.css              # Responsive styling
+├── script.js              # Portfolio interactions
+├── portfolio.json         # Structured portfolio facts and project data
+├── test-suite.js          # Automated source/data/security checks
+├── package.json
+├── vercel.json
+└── README.md
+```
 
-### Deploying to Vercel (Recommended)
-1. Fork or push this repository to your GitHub account.
-2. Sign in to [Vercel](https://vercel.com) and click **Add New Project**.
-3. Import your `Portfolio` repository.
-4. Vercel automatically detects the build settings:
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-5. Click **Deploy**. Your site will be live on a fast global edge network with custom security headers automatically applied from `vercel.json`.
+## Contact
 
-### Deploying to GitHub Pages
-1. Go to your repository on GitHub.
-2. Navigate to **Settings > Pages**.
-3. Under **Build and deployment**:
-   - **Source**: Select `Deploy from a branch`
-   - **Branch**: Select `gh-pages` (or `main`) and folder `/ (root)`
-   - Click **Save**.
-4. To redeploy from your machine:
-   ```bash
-   npm run deploy
-   ```
+- Email: nishanthv4@gmail.com
+- GitHub: https://github.com/Nishanthv4
+- LinkedIn: https://www.linkedin.com/in/nishanth-v-129367360/
+- X: https://x.com/nishant61972303
 
 ---
 
-## 8. Known Limitations
-
-- **WebGPU Support on iOS**: Safari on iOS does not yet have full default WebGPU support in stable channels. Visitors on iOS Safari will see the friendly fallback message.
-- **Initial Download Bandwidth**: The initial download requires ~350MB of internet data. Once downloaded, the model operates completely offline without consuming bandwidth.
-
----
-
-## 9. Contact & Social Profiles
-
-- **Email**: [nishanthv4@gmail.com](mailto:nishanthv4@gmail.com)
-- **LinkedIn**: [linkedin.com/in/nishanth-v-129367360](https://www.linkedin.com/in/nishanth-v-129367360/)
-- **GitHub**: [github.com/Nishanthv4](https://github.com/Nishanthv4)
-- **X (Twitter)**: [x.com/nishant61972303](https://x.com/nishant61972303)
-- **Institution**: R.M.D. Engineering College, Tamil Nadu, India
-
----
-
-*Authored by Nishanth V. Clean, accessible, privacy-respecting engineering.*
-
+Authored by Nishanth V.
